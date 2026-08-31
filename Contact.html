@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact — MedSaarthi</title>
+<meta name="description" content="Get in touch with MedSaarthi — for government and institutional partnerships, hospitals, pharmaceutical companies, technology partners, and investors.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-brand"><span class="mark"></span>MedSaarthi</a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="platform.html">Platform</a></li>
+      <li><a href="products.html">Products</a></li>
+      <li><a href="ecosystem.html">Ecosystem</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <div class="nav-cta">
+      <a href="platform.html" class="btn btn-secondary">Explore Platform</a>
+      <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<header class="page-hero">
+  <div class="container">
+    <p class="kicker">Get in touch</p>
+    <h1>Let's talk about building this together</h1>
+    <p>Whether you're a government body, a hospital, a manufacturer, a technology partner or an investor — tell us a bit about what you're looking for.</p>
+  </div>
+</header>
+
+<section class="section">
+  <div class="container grid-2" style="gap:48px; align-items:start;">
+
+    <div>
+      <form id="contact-form" novalidate>
+        <h3 style="margin-bottom:16px;">I'm reaching out as a...</h3>
+        <div class="stakeholder-grid" role="group" aria-label="Stakeholder type">
+          <button type="button" class="stakeholder-opt" data-value="Government / Institution">
+            <div class="icon-box navy"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21h18M4 21V10l8-6 8 6v11M9 21v-6h6v6"/></svg></div>
+            <h4>Government / Institution</h4>
+            <p>Policy, procurement or public health</p>
+          </button>
+          <button type="button" class="stakeholder-opt" data-value="Hospital">
+            <div class="icon-box navy"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 14 4 9l5-5M20 20v-7a4 4 0 0 0-4-4H4"/></svg></div>
+            <h4>Hospital</h4>
+            <p>Procurement or clinical partnership</p>
+          </button>
+          <button type="button" class="stakeholder-opt" data-value="Pharmaceutical Company">
+            <div class="icon-box navy"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="7" width="18" height="14" rx="1"/><path d="M8 7V5a4 4 0 0 1 8 0v2"/></svg></div>
+            <h4>Pharmaceutical Company</h4>
+            <p>Manufacturer or distribution network</p>
+          </button>
+          <button type="button" class="stakeholder-opt" data-value="Technology Partner">
+            <div class="icon-box navy"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2 3 14h7l-1 8 11-14h-7z"/></svg></div>
+            <h4>Technology Partner</h4>
+            <p>Integration or platform partnership</p>
+          </button>
+          <button type="button" class="stakeholder-opt" data-value="Investor">
+            <div class="icon-box navy"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3v18h18"/><path d="M7 15l4-6 4 3 5-8"/></svg></div>
+            <h4>Investor</h4>
+            <p>Funding or growth partnership</p>
+          </button>
+          <button type="button" class="stakeholder-opt" data-value="Other">
+            <div class="icon-box navy"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9.1 9a3 3 0 0 1 5.8 1c0 2-3 2-3 4M12 17h.01"/></svg></div>
+            <h4>Other</h4>
+            <p>Something not listed above</p>
+          </button>
+        </div>
+        <span id="stakeholder-error" class="err" style="display:none; margin-bottom:18px;">Please select a stakeholder type.</span>
+        <input type="hidden" id="stakeholder-type" name="stakeholder-type">
+
+        <div class="form-grid">
+          <div class="form-field">
+            <label for="c-name">Name</label>
+            <input type="text" id="c-name" name="name" placeholder="Your full name">
+            <span class="err">Please enter your name.</span>
+          </div>
+          <div class="form-field">
+            <label for="c-org">Organization</label>
+            <input type="text" id="c-org" name="organization" placeholder="Your organization">
+            <span class="err">Please enter your organization.</span>
+          </div>
+          <div class="form-field">
+            <label for="c-email">Email</label>
+            <input type="email" id="c-email" name="email" placeholder="you@organization.com">
+            <span class="err">Please enter a valid email address.</span>
+          </div>
+          <div class="form-field">
+            <label for="c-phone">Phone <span class="small">(optional)</span></label>
+            <input type="tel" id="c-phone" name="phone" placeholder="+91 00000 00000">
+          </div>
+          <div class="form-field full">
+            <label for="c-message">Message</label>
+            <textarea id="c-message" name="message" placeholder="Tell us about what you're looking for"></textarea>
+            <span class="err">Please add a short message (at least 10 characters).</span>
+          </div>
+        </div>
+
+        <div style="margin-top:24px;">
+          <button type="submit" id="google-form-submit" class="btn btn-primary">Choose an inquiry type</button>
+          <p class="small" style="margin-top:10px;">Select the option that best describes your inquiry. You’ll then be taken to the relevant Google Form in a new browser tab.</p>
+        </div>
+      </form>
+
+      <div id="form-success" class="form-success">Thank you — your inquiry details look complete. A member of the MedSaarthi team will follow up soon.</div>
+    </div>
+
+    <div>
+      <figure class="side-photo reveal">
+        <img src="https://images.pexels.com/photos/33175648/pexels-photo-33175648.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=900&amp;h=520&amp;fit=crop" loading="lazy" alt="Professional handshake representing a healthcare partnership" width="900" height="520">
+      </figure>
+      <div class="contact-info-card">
+        <h4>ADDRESS</h4>
+        <p>13, Institutional Area, Lodhi Road,<br>New Delhi 110003</p>
+        <div class="divider"></div>
+        <h4>EMAIL</h4>
+        <p>globalexpressgroup@gmail.com</p>
+        <div class="divider"></div>
+        <h4>PHONE</h4>
+        <p>96505 60277 / 99101 96123</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-brand">MedSaarthi</div>
+        <p style="max-width:32ch; color:#9FB3C4; font-size:0.9rem;">Building India's digital infrastructure for affordable generic medicines.</p>
+      </div>
+      <div>
+        <h4>Platform</h4>
+        <ul>
+          <li><a href="platform.html">Architecture</a></li>
+          <li><a href="products.html">Products</a></li>
+          <li><a href="ecosystem.html">Ecosystem</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Company</h4>
+        <ul>
+          <li><a href="about.html">About</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Address</h4>
+        <ul>
+          <li>13, Institutional Area, Lodhi Road, New Delhi 110003</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 MedSaarthi. All rights reserved.</span>
+      <span>Empowering every citizen through Access, Trust, Technology &amp; Transparency.</span>
+    </div>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
