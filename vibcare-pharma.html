@@ -426,6 +426,136 @@
       margin-bottom: 18px;
     }
 
+    .vibcare-page .vibcare-medicine-gallery {
+      position: relative;
+      margin: 0 0 18px;
+    }
+
+    .vibcare-page .vibcare-medicine-viewport {
+      overflow: hidden;
+      border-radius: 15px;
+    }
+
+    .vibcare-page .vibcare-medicine-track {
+      display: flex;
+      gap: 12px;
+      transition: transform 0.35s ease;
+    }
+
+    .vibcare-page .vibcare-medicine-card {
+      position: relative;
+      min-height: 118px;
+      flex: 0 0 calc((100% - 36px) / 4);
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 0;
+      overflow: hidden;
+      background: var(--navy-900);
+      color: var(--white);
+      text-align: left;
+      cursor: pointer;
+      box-shadow: var(--shadow-sm);
+      transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+    }
+
+    .vibcare-page .vibcare-medicine-card:hover,
+    .vibcare-page .vibcare-medicine-card.active {
+      transform: translateY(-3px);
+      border-color: var(--teal-500);
+      box-shadow: var(--shadow-md);
+    }
+
+    .vibcare-page .vibcare-medicine-card img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.72;
+      transition: transform 0.35s ease, opacity 0.25s ease;
+    }
+
+    .vibcare-page .vibcare-medicine-card:hover img,
+    .vibcare-page .vibcare-medicine-card.active img {
+      transform: scale(1.08);
+      opacity: 0.88;
+    }
+
+    .vibcare-page .vibcare-medicine-card::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(11,33,54,0.04), rgba(11,33,54,0.88));
+    }
+
+    .vibcare-page .vibcare-medicine-card span {
+      position: absolute;
+      z-index: 1;
+      left: 13px;
+      right: 10px;
+      bottom: 11px;
+      font-size: 0.78rem;
+      font-weight: 700;
+    }
+
+    .vibcare-page .vibcare-medicine-card small {
+      display: block;
+      margin-top: 3px;
+      color: rgba(255,255,255,0.78);
+      font-size: 0.67rem;
+      font-weight: 500;
+    }
+
+    .vibcare-page .vibcare-carousel-btn {
+      position: absolute;
+      top: 50%;
+      z-index: 3;
+      width: 32px;
+      height: 32px;
+      border: 1px solid rgba(255,255,255,0.65);
+      border-radius: 50%;
+      background: rgba(11,33,54,0.82);
+      color: var(--white);
+      font-size: 1.1rem;
+      line-height: 1;
+      cursor: pointer;
+      transform: translateY(-50%);
+      transition: background 0.2s ease, transform 0.2s ease;
+    }
+
+    .vibcare-page .vibcare-carousel-btn:hover {
+      background: var(--teal-600);
+      transform: translateY(-50%) scale(1.08);
+    }
+
+    .vibcare-page .vibcare-carousel-btn.prev { left: 10px; }
+    .vibcare-page .vibcare-carousel-btn.next { right: 10px; }
+
+    .vibcare-page .vibcare-carousel-footer {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 7px;
+      padding-top: 10px;
+    }
+
+    .vibcare-page .vibcare-carousel-dot {
+      width: 7px;
+      height: 7px;
+      padding: 0;
+      border: 0;
+      border-radius: 50%;
+      background: var(--line-strong);
+      cursor: pointer;
+      transition: width 0.2s ease, border-radius 0.2s ease, background 0.2s ease;
+    }
+
+    .vibcare-page .vibcare-carousel-dot.active {
+      width: 22px;
+      border-radius: 999px;
+      background: var(--teal-600);
+    }
+
     .vibcare-page .vibcare-table-wrap {
       border: 1px solid var(--line);
       border-radius: 18px;
@@ -717,6 +847,10 @@
     }
 
     @media (max-width: 640px) {
+      .vibcare-page .vibcare-medicine-card {
+        flex-basis: calc((100% - 12px) / 2);
+      }
+
       .vibcare-page .vibcare-search,
       .vibcare-page .vibcare-sort {
         width: 100%;
@@ -876,6 +1010,40 @@
     </section>
 
     <section aria-label="Category filters" class="vibcare-filter-bar" id="vibcare-filter-bar"></section>
+
+    <section class="vibcare-medicine-gallery" id="vibcare-medicine-gallery" aria-label="Quick medicine categories">
+      <div class="vibcare-medicine-viewport">
+        <div class="vibcare-medicine-track" id="vibcare-medicine-track">
+      <button class="vibcare-medicine-card" type="button" data-medicine-category="Tablets" data-slide="0">
+        <img src="https://images.unsplash.com/photo-1471864190281-a93a3070b6de?auto=format&fit=crop&w=500&q=80" alt="Tablets arranged for a medicine catalogue">
+        <span>Tablets<small>Solid dose medicines</small></span>
+      </button>
+      <button class="vibcare-medicine-card" type="button" data-medicine-category="Capsules" data-slide="1">
+        <img src="https://images.unsplash.com/photo-1587854692152-cbe660dbde88?auto=format&fit=crop&w=500&q=80" alt="Capsules and pharmaceutical packaging">
+        <span>Capsules<small>Softgel and hard-shell formats</small></span>
+      </button>
+      <button class="vibcare-medicine-card" type="button" data-medicine-category="Syrups" data-slide="2">
+        <img src="https://images.unsplash.com/photo-1585435557343-3b092031a831?auto=format&fit=crop&w=500&q=80" alt="Pharmaceutical liquid medicine bottles">
+        <span>Liquid medicines<small>Syrups and oral solutions</small></span>
+      </button>
+      <button class="vibcare-medicine-card" type="button" data-medicine-category="Dry Injections" data-slide="3">
+        <img src="https://images.unsplash.com/photo-1576671081837-49000212a370?auto=format&fit=crop&w=500&q=80" alt="Sterile pharmaceutical vials and injectables">
+        <span>Injectables<small>Vials and injection formats</small></span>
+      </button>
+      <button class="vibcare-medicine-card" type="button" data-medicine-category="Eye Drops" data-slide="4">
+        <img src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&w=500&q=80" alt="Clinical eye-care medicine dropper">
+        <span>Eye care<small>Drops and ophthalmic medicines</small></span>
+      </button>
+      <button class="vibcare-medicine-card" type="button" data-medicine-category="Churans, Oils and Ras’s" data-slide="5">
+        <img src="https://images.unsplash.com/photo-1608571423902-eed4a5ad8108?auto=format&fit=crop&w=500&q=80" alt="Herbal ingredients for Ayurvedic medicines">
+        <span>Ayurvedic<small>Botanical and wellness range</small></span>
+      </button>
+        </div>
+      </div>
+      <button class="vibcare-carousel-btn prev" type="button" id="vibcare-carousel-prev" aria-label="Previous medicine images">‹</button>
+      <button class="vibcare-carousel-btn next" type="button" id="vibcare-carousel-next" aria-label="Next medicine images">›</button>
+      <div class="vibcare-carousel-footer" id="vibcare-carousel-dots" aria-label="Medicine carousel slides"></div>
+    </section>
 
     <section class="vibcare-table-wrap" aria-label="Vibcare product catalogue">
       <table class="vibcare-table">
@@ -1045,6 +1213,12 @@
         pageSize: 25
       };
 
+      const carouselState = {
+        index: 0,
+        visibleSlides: 4,
+        slideCount: 6
+      };
+
       const ui = {
         searchInput: document.getElementById('vibcare-search-input'),
         resultCount: document.getElementById('vibcare-result-count'),
@@ -1055,6 +1229,11 @@
         pagination: document.getElementById('vibcare-pagination-controls'),
         filterBar: document.getElementById('vibcare-filter-bar'),
         showcase: document.getElementById('vibcare-division-showcase'),
+        medicineGallery: document.getElementById('vibcare-medicine-gallery'),
+        medicineTrack: document.getElementById('vibcare-medicine-track'),
+        carouselPrev: document.getElementById('vibcare-carousel-prev'),
+        carouselNext: document.getElementById('vibcare-carousel-next'),
+        carouselDots: document.getElementById('vibcare-carousel-dots'),
         divisionTabs: Array.from(document.querySelectorAll('[data-division]')),
         drawer: document.getElementById('vibcare-drawer'),
         overlay: document.getElementById('vibcare-drawer-overlay'),
@@ -1161,6 +1340,14 @@
             state.page = 1;
             render();
           });
+        });
+
+        ui.medicineGallery.querySelectorAll('[data-medicine-category]').forEach((card) => {
+          const category = card.dataset.medicineCategory;
+          const available = categories.includes(category);
+          card.hidden = !available;
+          card.classList.toggle('active', state.category === category);
+          card.setAttribute('aria-pressed', String(state.category === category));
         });
       }
 
@@ -1339,6 +1526,15 @@
           state.page = 1;
           render();
           document.querySelector('.vibcare-topbar').scrollIntoView({ behavior: 'smooth', block: 'center' });
+        });
+      });
+
+      ui.medicineGallery.querySelectorAll('[data-medicine-category]').forEach((card) => {
+        card.addEventListener('click', () => {
+          state.category = card.dataset.medicineCategory;
+          state.page = 1;
+          render();
+          document.querySelector('.vibcare-table-wrap').scrollIntoView({ behavior: 'smooth', block: 'start' });
         });
       });
 
