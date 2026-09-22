@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Vibcare Price List — MedGlobal</title>
+  <title>Medicines — MedGlobal</title>
   <meta name="description" content="Vibcare Pharma product catalogue across specialised healthcare divisions.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -426,43 +426,47 @@
       margin-bottom: 18px;
     }
 
+    /* ====== PREMIUM SINGLE-IMAGE AUTO CAROUSEL ====== */
     .vibcare-page .vibcare-medicine-gallery {
       position: relative;
-      margin: 0 0 18px;
+      margin: 0 0 24px;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 8px 40px rgba(11,33,54,0.22);
     }
 
     .vibcare-page .vibcare-medicine-viewport {
       overflow: hidden;
-      border-radius: 15px;
+      border-radius: 20px;
+      position: relative;
+      height: 340px;
     }
 
     .vibcare-page .vibcare-medicine-track {
       display: flex;
-      gap: 12px;
-      transition: transform 0.35s ease;
+      height: 100%;
+      transition: transform 0.65s cubic-bezier(0.77,0,0.175,1);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .vibcare-page .vibcare-medicine-track {
+        transition: none;
+      }
     }
 
     .vibcare-page .vibcare-medicine-card {
       position: relative;
-      min-height: 118px;
-      flex: 0 0 calc((100% - 36px) / 4);
-      border: 1px solid var(--line);
-      border-radius: 14px;
+      flex: 0 0 100%;
+      width: 100%;
+      height: 100%;
+      border: none;
+      border-radius: 0;
       padding: 0;
       overflow: hidden;
       background: var(--navy-900);
       color: var(--white);
       text-align: left;
       cursor: pointer;
-      box-shadow: var(--shadow-sm);
-      transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
-    }
-
-    .vibcare-page .vibcare-medicine-card:hover,
-    .vibcare-page .vibcare-medicine-card.active {
-      transform: translateY(-3px);
-      border-color: var(--teal-500);
-      box-shadow: var(--shadow-md);
     }
 
     .vibcare-page .vibcare-medicine-card img {
@@ -471,89 +475,299 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
-      opacity: 0.72;
-      transition: transform 0.35s ease, opacity 0.25s ease;
+      opacity: 0;
+      transform: scale(1.06);
+      transition: opacity 0.65s ease, transform 6s ease;
     }
 
-    .vibcare-page .vibcare-medicine-card:hover img,
-    .vibcare-page .vibcare-medicine-card.active img {
-      transform: scale(1.08);
-      opacity: 0.88;
+    .vibcare-page .vibcare-medicine-card.slide-active img {
+      opacity: 0.82;
+      transform: scale(1.0);
+    }
+
+    .vibcare-page .vibcare-medicine-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(11,33,54,0.65) 0%, rgba(11,33,54,0.1) 55%, rgba(14,124,134,0.25) 100%);
+      z-index: 1;
+      pointer-events: none;
     }
 
     .vibcare-page .vibcare-medicine-card::after {
       content: '';
       position: absolute;
-      inset: 0;
-      background: linear-gradient(180deg, rgba(11,33,54,0.04), rgba(11,33,54,0.88));
-    }
-
-    .vibcare-page .vibcare-medicine-card span {
-      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 55%;
+      background: linear-gradient(0deg, rgba(11,33,54,0.92) 0%, transparent 100%);
       z-index: 1;
-      left: 13px;
-      right: 10px;
-      bottom: 11px;
-      font-size: 0.78rem;
+      pointer-events: none;
+    }
+
+    .vibcare-page .vibcare-slide-content {
+      position: absolute;
+      z-index: 2;
+      left: 0; right: 0; bottom: 0;
+      padding: 24px 28px 26px;
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .vibcare-page .vibcare-slide-text { max-width: 62%; }
+
+    .vibcare-page .vibcare-slide-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      background: rgba(255,255,255,0.12);
+      border: 1px solid rgba(255,255,255,0.2);
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+      color: rgba(255,255,255,0.92);
+      font-size: 0.63rem;
       font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      border-radius: 999px;
+      padding: 5px 11px;
+      margin-bottom: 9px;
     }
 
-    .vibcare-page .vibcare-medicine-card small {
-      display: block;
-      margin-top: 3px;
-      color: rgba(255,255,255,0.78);
-      font-size: 0.67rem;
-      font-weight: 500;
+    .vibcare-page .vibcare-slide-tag::before {
+      content: '';
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--teal-600);
+      box-shadow: 0 0 0 3px rgba(14,124,134,0.38);
+      flex-shrink: 0;
     }
 
+    .vibcare-page .vibcare-slide-title {
+      font-family: 'Fraunces', serif;
+      font-size: clamp(1.2rem, 2.4vw, 1.75rem);
+      font-weight: 700;
+      line-height: 1.2;
+      color: #fff;
+      margin: 0 0 6px;
+      text-shadow: 0 2px 12px rgba(0,0,0,0.4);
+    }
+
+    .vibcare-page .vibcare-slide-sub {
+      font-size: 0.82rem;
+      color: rgba(255,255,255,0.72);
+      font-weight: 400;
+      line-height: 1.5;
+    }
+
+    .vibcare-page .vibcare-slide-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--teal-600);
+      color: #fff;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      padding: 9px 16px;
+      border-radius: 999px;
+      border: none;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: background 0.18s ease, transform 0.18s ease;
+      flex-shrink: 0;
+      align-self: flex-end;
+    }
+
+    .vibcare-page .vibcare-slide-cta:hover {
+      background: #0a6b74;
+      transform: scale(1.05);
+    }
+
+    /* Progress bar at top */
+    .vibcare-page .vibcare-slide-progress-wrap {
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: rgba(255,255,255,0.12);
+      z-index: 3;
+    }
+
+    .vibcare-page .vibcare-slide-progress-bar {
+      height: 100%;
+      background: var(--teal-600);
+      width: 0%;
+    }
+
+    /* Counter badge */
+    .vibcare-page .vibcare-slide-counter {
+      position: absolute;
+      top: 14px;
+      right: 16px;
+      z-index: 3;
+      background: rgba(11,33,54,0.6);
+      border: 1px solid rgba(255,255,255,0.16);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      color: rgba(255,255,255,0.9);
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      padding: 5px 10px;
+      border-radius: 999px;
+    }
+
+    /* Pause overlay icon */
+    .vibcare-page .vibcare-pause-indicator {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) scale(0.6);
+      z-index: 4;
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      background: rgba(11,33,54,0.72);
+      border: 1.5px solid rgba(255,255,255,0.28);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.22s ease, transform 0.22s ease;
+    }
+
+    .vibcare-page .vibcare-medicine-gallery.paused .vibcare-pause-indicator {
+      opacity: 1;
+      transform: translate(-50%, -50%) scale(1);
+    }
+
+    .vibcare-page .vibcare-pause-indicator svg {
+      width: 20px;
+      height: 20px;
+      fill: #fff;
+    }
+
+    /* Prev / next buttons */
     .vibcare-page .vibcare-carousel-btn {
       position: absolute;
       top: 50%;
       z-index: 3;
-      width: 32px;
-      height: 32px;
-      border: 1px solid rgba(255,255,255,0.65);
+      width: 44px;
+      height: 44px;
+      border: 1.5px solid rgba(255,255,255,0.32);
       border-radius: 50%;
-      background: rgba(11,33,54,0.82);
+      background: rgba(11,33,54,0.68);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
       color: var(--white);
-      font-size: 1.1rem;
+      font-size: 1.25rem;
       line-height: 1;
       cursor: pointer;
       transform: translateY(-50%);
-      transition: background 0.2s ease, transform 0.2s ease;
+      transition: background 0.22s ease, border-color 0.22s ease, transform 0.22s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
 
     .vibcare-page .vibcare-carousel-btn:hover {
       background: var(--teal-600);
-      transform: translateY(-50%) scale(1.08);
+      border-color: var(--teal-600);
+      transform: translateY(-50%) scale(1.1);
     }
 
-    .vibcare-page .vibcare-carousel-btn.prev { left: 10px; }
-    .vibcare-page .vibcare-carousel-btn.next { right: 10px; }
+    .vibcare-page .vibcare-carousel-btn.prev { left: 16px; }
+    .vibcare-page .vibcare-carousel-btn.next { right: 16px; }
 
+    /* Footer: dots + thumbnails */
     .vibcare-page .vibcare-carousel-footer {
       display: flex;
       align-items: center;
-      justify-content: center;
-      gap: 7px;
-      padding-top: 10px;
+      gap: 8px;
+      padding: 12px 4px 2px;
     }
 
     .vibcare-page .vibcare-carousel-dot {
-      width: 7px;
-      height: 7px;
+      width: 8px;
+      height: 8px;
       padding: 0;
-      border: 0;
+      border: 1.5px solid var(--line-strong);
       border-radius: 50%;
-      background: var(--line-strong);
+      background: transparent;
       cursor: pointer;
-      transition: width 0.2s ease, border-radius 0.2s ease, background 0.2s ease;
+      transition: width 0.25s ease, border-radius 0.25s ease, background 0.25s ease, border-color 0.25s ease;
+      flex-shrink: 0;
     }
 
     .vibcare-page .vibcare-carousel-dot.active {
-      width: 22px;
+      width: 28px;
       border-radius: 999px;
       background: var(--teal-600);
+      border-color: var(--teal-600);
+    }
+
+    .vibcare-page .vibcare-carousel-dot:hover:not(.active) {
+      background: var(--line-strong);
+    }
+
+    /* Thumbnail strip */
+    .vibcare-page .vibcare-thumb-strip {
+      display: flex;
+      gap: 7px;
+      overflow-x: auto;
+      scrollbar-width: none;
+      margin-left: 6px;
+    }
+
+    .vibcare-page .vibcare-thumb-strip::-webkit-scrollbar { display: none; }
+
+    .vibcare-page .vibcare-thumb-btn {
+      flex: 0 0 68px;
+      height: 44px;
+      border-radius: 8px;
+      overflow: hidden;
+      border: 2px solid transparent;
+      padding: 0;
+      cursor: pointer;
+      transition: border-color 0.2s ease, transform 0.2s ease;
+      position: relative;
+      background: var(--navy-900);
+    }
+
+    .vibcare-page .vibcare-thumb-btn img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.55;
+      transition: opacity 0.2s ease;
+    }
+
+    .vibcare-page .vibcare-thumb-btn.active {
+      border-color: var(--teal-600);
+      transform: scale(1.07);
+    }
+
+    .vibcare-page .vibcare-thumb-btn.active img,
+    .vibcare-page .vibcare-thumb-btn:hover img {
+      opacity: 1;
+    }
+
+    @media (max-width: 640px) {
+      .vibcare-page .vibcare-medicine-viewport { height: 230px; }
+      .vibcare-page .vibcare-slide-title { font-size: 1.1rem; }
+      .vibcare-page .vibcare-slide-content {
+        padding: 14px 16px 16px;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+      }
+      .vibcare-page .vibcare-slide-text { max-width: 100%; }
+      .vibcare-page .vibcare-carousel-btn { width: 36px; height: 36px; font-size: 1rem; }
+      .vibcare-page .vibcare-thumb-btn { flex: 0 0 52px; height: 34px; }
     }
 
     .vibcare-page .vibcare-table-wrap {
@@ -904,11 +1118,11 @@
         <nav class="vibcare-breadcrumb" aria-label="Breadcrumb">
           <a href="products.html">Products</a>
           <span>/</span>
-          <span>Vibcare Price List</span>
+          <span>Medicines</span>
         </nav>
-        <div class="vibcare-badge">Vibcare Pharma</div>
-        <h1>Vibcare Pharma — Product Catalogue</h1>
-        <p>Explore Vibcare Pharma products across its specialised healthcare divisions.</p>
+        <div class="vibcare-badge">Pharma</div>
+        <h1>Product Catalogue</h1>
+        <p>Explore our medicines across specialised healthcare divisions.</p>
         <div class="vibcare-stats" aria-label="Catalogue summary">
           <div class="vibcare-stat">
             <strong>562</strong>
