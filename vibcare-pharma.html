@@ -445,7 +445,7 @@
     .vibcare-page .vibcare-medicine-track {
       display: flex;
       height: 100%;
-      transition: transform 0.65s cubic-bezier(0.77,0,0.175,1);
+      transition: transform 0.36s cubic-bezier(0.22,0.61,0.36,1);
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -469,6 +469,11 @@
       cursor: pointer;
     }
 
+    .vibcare-page .vibcare-medicine-card:focus-visible {
+      outline: 3px solid var(--teal-500);
+      outline-offset: -3px;
+    }
+
     .vibcare-page .vibcare-medicine-card img {
       position: absolute;
       inset: 0;
@@ -477,7 +482,7 @@
       object-fit: cover;
       opacity: 0;
       transform: scale(1.06);
-      transition: opacity 0.65s ease, transform 6s ease;
+      transition: opacity 0.36s ease, transform 2.8s ease;
     }
 
     .vibcare-page .vibcare-medicine-card.slide-active img {
@@ -562,6 +567,15 @@
       line-height: 1.5;
     }
 
+    .vibcare-page .vibcare-slide-index {
+      display: block;
+      margin-top: 10px;
+      color: rgba(255,255,255,0.58);
+      font-size: 0.66rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
     .vibcare-page .vibcare-slide-cta {
       display: inline-flex;
       align-items: center;
@@ -600,6 +614,7 @@
       height: 100%;
       background: var(--teal-600);
       width: 0%;
+      transition: width 0.1s linear;
     }
 
     /* Counter badge */
@@ -689,6 +704,14 @@
       align-items: center;
       gap: 8px;
       padding: 12px 4px 2px;
+      min-height: 58px;
+    }
+
+    .vibcare-page .vibcare-carousel-dots {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex: none;
     }
 
     .vibcare-page .vibcare-carousel-dot {
@@ -714,48 +737,6 @@
       background: var(--line-strong);
     }
 
-    /* Thumbnail strip */
-    .vibcare-page .vibcare-thumb-strip {
-      display: flex;
-      gap: 7px;
-      overflow-x: auto;
-      scrollbar-width: none;
-      margin-left: 6px;
-    }
-
-    .vibcare-page .vibcare-thumb-strip::-webkit-scrollbar { display: none; }
-
-    .vibcare-page .vibcare-thumb-btn {
-      flex: 0 0 68px;
-      height: 44px;
-      border-radius: 8px;
-      overflow: hidden;
-      border: 2px solid transparent;
-      padding: 0;
-      cursor: pointer;
-      transition: border-color 0.2s ease, transform 0.2s ease;
-      position: relative;
-      background: var(--navy-900);
-    }
-
-    .vibcare-page .vibcare-thumb-btn img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      opacity: 0.55;
-      transition: opacity 0.2s ease;
-    }
-
-    .vibcare-page .vibcare-thumb-btn.active {
-      border-color: var(--teal-600);
-      transform: scale(1.07);
-    }
-
-    .vibcare-page .vibcare-thumb-btn.active img,
-    .vibcare-page .vibcare-thumb-btn:hover img {
-      opacity: 1;
-    }
-
     @media (max-width: 640px) {
       .vibcare-page .vibcare-medicine-viewport { height: 230px; }
       .vibcare-page .vibcare-slide-title { font-size: 1.1rem; }
@@ -767,7 +748,6 @@
       }
       .vibcare-page .vibcare-slide-text { max-width: 100%; }
       .vibcare-page .vibcare-carousel-btn { width: 36px; height: 36px; font-size: 1rem; }
-      .vibcare-page .vibcare-thumb-btn { flex: 0 0 52px; height: 34px; }
     }
 
     .vibcare-page .vibcare-table-wrap {
@@ -1229,34 +1209,36 @@
       <div class="vibcare-medicine-viewport">
         <div class="vibcare-medicine-track" id="vibcare-medicine-track">
       <button class="vibcare-medicine-card" type="button" data-medicine-category="Tablets" data-slide="0">
-        <img src="https://images.unsplash.com/photo-1471864190281-a93a3070b6de?auto=format&fit=crop&w=500&q=80" alt="Tablets arranged for a medicine catalogue">
-        <span>Tablets<small>Solid dose medicines</small></span>
+        <img src="https://images.unsplash.com/photo-1471864190281-a93a3070b6de?auto=format&fit=crop&w=1200&q=88" alt="White and blue tablets arranged for pharmaceutical care">
+        <div class="vibcare-slide-content"><div class="vibcare-slide-text"><span class="vibcare-slide-tag">PRIMA / solid dose</span><h3 class="vibcare-slide-title">Tablets</h3><span class="vibcare-slide-sub">Reliable everyday medicines across pain care, anti-infectives and wellness.</span><span class="vibcare-slide-index">01 / 02</span></div><span class="vibcare-slide-cta">Browse range <span aria-hidden="true">→</span></span></div>
       </button>
-      <button class="vibcare-medicine-card" type="button" data-medicine-category="Capsules" data-slide="1">
-        <img src="https://images.unsplash.com/photo-1587854692152-cbe660dbde88?auto=format&fit=crop&w=500&q=80" alt="Capsules and pharmaceutical packaging">
-        <span>Capsules<small>Softgel and hard-shell formats</small></span>
+      <button class="vibcare-medicine-card" type="button" data-medicine-category="Capsules" data-slide-label="Medicines" data-slide="1">
+        <img src="https://images.unsplash.com/photo-1550572017-edd951b55104?auto=format&fit=crop&w=1200&q=88" alt="Medicine bottles and tablets arranged on a clean surface">
+        <div class="vibcare-slide-content"><div class="vibcare-slide-text"><span class="vibcare-slide-tag">PRIMA / medicine range</span><h3 class="vibcare-slide-title">Medicines</h3><span class="vibcare-slide-sub">A focused selection of trusted pharmaceutical formats for everyday care.</span><span class="vibcare-slide-index">02 / 02</span></div><span class="vibcare-slide-cta">Browse range <span aria-hidden="true">→</span></span></div>
       </button>
-      <button class="vibcare-medicine-card" type="button" data-medicine-category="Syrups" data-slide="2">
-        <img src="https://images.unsplash.com/photo-1585435557343-3b092031a831?auto=format&fit=crop&w=500&q=80" alt="Pharmaceutical liquid medicine bottles">
-        <span>Liquid medicines<small>Syrups and oral solutions</small></span>
+      <button class="vibcare-medicine-card" type="button" data-medicine-category="Capsules" data-slide-label="Capsules" data-slide="2">
+        <img src="https://images.unsplash.com/photo-1587854692152-cbe660dbde88?auto=format&fit=crop&w=1200&q=88" alt="Colourful capsules prepared for pharmaceutical treatment">
+        <div class="vibcare-slide-content"><div class="vibcare-slide-text"><span class="vibcare-slide-tag">PRIMA / capsule care</span><h3 class="vibcare-slide-title">Capsules</h3><span class="vibcare-slide-sub">Convenient capsule formats for focused everyday treatment.</span><span class="vibcare-slide-index">03 / 06</span></div><span class="vibcare-slide-cta">Browse range <span aria-hidden="true">→</span></span></div>
       </button>
-      <button class="vibcare-medicine-card" type="button" data-medicine-category="Dry Injections" data-slide="3">
-        <img src="https://images.unsplash.com/photo-1576671081837-49000212a370?auto=format&fit=crop&w=500&q=80" alt="Sterile pharmaceutical vials and injectables">
-        <span>Injectables<small>Vials and injection formats</small></span>
+      <button class="vibcare-medicine-card" type="button" data-medicine-category="Syrups" data-slide-label="Liquid medicines" data-slide="3">
+        <img src="https://images.unsplash.com/photo-1585435557343-3b092031a831?auto=format&fit=crop&w=1200&q=88" alt="Pharmaceutical medicine bottles for liquid treatments">
+        <div class="vibcare-slide-content"><div class="vibcare-slide-text"><span class="vibcare-slide-tag">PRIMA / oral care</span><h3 class="vibcare-slide-title">Liquid medicines</h3><span class="vibcare-slide-sub">Syrups and oral solutions for flexible everyday dosing.</span><span class="vibcare-slide-index">04 / 06</span></div><span class="vibcare-slide-cta">Browse range <span aria-hidden="true">→</span></span></div>
       </button>
-      <button class="vibcare-medicine-card" type="button" data-medicine-category="Eye Drops" data-slide="4">
-        <img src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&w=500&q=80" alt="Clinical eye-care medicine dropper">
-        <span>Eye care<small>Drops and ophthalmic medicines</small></span>
+      <button class="vibcare-medicine-card" type="button" data-medicine-category="Dry Injections" data-slide-label="Injectables" data-slide="4">
+        <img src="https://images.unsplash.com/photo-1576671081837-49000212a370?auto=format&fit=crop&w=1200&q=88" alt="Sterile medicine vials for injectable treatment">
+        <div class="vibcare-slide-content"><div class="vibcare-slide-text"><span class="vibcare-slide-tag">PRIMA / clinical care</span><h3 class="vibcare-slide-title">Injectables</h3><span class="vibcare-slide-sub">Sterile medicine formats for clinical and hospital settings.</span><span class="vibcare-slide-index">05 / 06</span></div><span class="vibcare-slide-cta">Browse range <span aria-hidden="true">→</span></span></div>
       </button>
-      <button class="vibcare-medicine-card" type="button" data-medicine-category="Churans, Oils and Ras’s" data-slide="5">
-        <img src="https://images.unsplash.com/photo-1608571423902-eed4a5ad8108?auto=format&fit=crop&w=500&q=80" alt="Herbal ingredients for Ayurvedic medicines">
-        <span>Ayurvedic<small>Botanical and wellness range</small></span>
+      <button class="vibcare-medicine-card" type="button" data-medicine-category="Tablets" data-slide-label="Wellness medicines" data-slide="5">
+        <img src="https://images.unsplash.com/photo-1608571423902-eed4a5ad8108?auto=format&fit=crop&w=1200&q=88" alt="Natural medicine ingredients arranged for wellness products">
+        <div class="vibcare-slide-content"><div class="vibcare-slide-text"><span class="vibcare-slide-tag">NURALZ / wellness</span><h3 class="vibcare-slide-title">Wellness medicines</h3><span class="vibcare-slide-sub">Botanical ingredients and trusted wellness formulations.</span><span class="vibcare-slide-index">06 / 06</span></div><span class="vibcare-slide-cta">Browse range <span aria-hidden="true">→</span></span></div>
       </button>
         </div>
       </div>
+      <div class="vibcare-slide-progress-wrap" aria-hidden="true"><div class="vibcare-slide-progress-bar" id="vibcare-slide-progress"></div></div>
+      <span class="vibcare-slide-counter" id="vibcare-slide-counter" aria-live="polite">01 / 06</span>
       <button class="vibcare-carousel-btn prev" type="button" id="vibcare-carousel-prev" aria-label="Previous medicine images">‹</button>
       <button class="vibcare-carousel-btn next" type="button" id="vibcare-carousel-next" aria-label="Next medicine images">›</button>
-      <div class="vibcare-carousel-footer" id="vibcare-carousel-dots" aria-label="Medicine carousel slides"></div>
+      <div class="vibcare-carousel-footer" aria-label="Medicine carousel slides"><div class="vibcare-carousel-dots" id="vibcare-carousel-dots"></div></div>
     </section>
 
     <section class="vibcare-table-wrap" aria-label="Vibcare product catalogue">
@@ -1460,8 +1442,82 @@
         detailPacking: document.getElementById('vibcare-detail-packing'),
         detailComposition: document.getElementById('vibcare-detail-composition'),
         detailGST: document.getElementById('vibcare-detail-gst'),
-        copyBtn: document.getElementById('vibcare-copy-composition')
+        copyBtn: document.getElementById('vibcare-copy-composition'),
+        carouselPause: document.getElementById('vibcare-carousel-pause'),
+        carouselProgress: document.getElementById('vibcare-slide-progress'),
+        carouselCounter: document.getElementById('vibcare-slide-counter')
       };
+
+      function setupCarousel() {
+        const cards = Array.from(ui.medicineTrack.querySelectorAll('.vibcare-medicine-card'));
+        const duration = 6500;
+        let elapsed = 0;
+        let timer = null;
+        let progressTimer = null;
+        let pointerStart = null;
+
+        function renderCarouselControls() {
+          ui.carouselDots.innerHTML = cards.map((card, index) => (
+            `<button class="vibcare-carousel-dot ${index === carouselState.index ? 'active' : ''}" type="button" data-carousel-index="${index}" aria-label="Go to ${card.dataset.slideLabel || card.dataset.medicineCategory}" aria-current="${index === carouselState.index ? 'true' : 'false'}"></button>`
+          )).join('');
+          ui.carouselDots.querySelectorAll('[data-carousel-index]').forEach((button) => {
+            button.addEventListener('click', () => goTo(Number(button.dataset.carouselIndex)));
+          });
+        }
+
+        function updateCarousel() {
+          const index = carouselState.index;
+          ui.medicineTrack.style.transform = `translateX(-${index * 100}%)`;
+          cards.forEach((card, cardIndex) => {
+            const active = cardIndex === index;
+            card.classList.toggle('slide-active', active);
+            card.setAttribute('aria-current', String(active));
+          });
+          ui.carouselCounter.textContent = `${String(index + 1).padStart(2, '0')} / ${String(cards.length).padStart(2, '0')}`;
+          renderCarouselControls();
+          elapsed = 0;
+          ui.carouselProgress.style.width = '0%';
+        }
+
+        function goTo(index) {
+          carouselState.index = (index + cards.length) % cards.length;
+          updateCarousel();
+        }
+
+        function stopTimers() {
+          window.clearInterval(timer);
+          window.clearInterval(progressTimer);
+        }
+
+        function startTimers() {
+          stopTimers();
+          if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+          timer = window.setInterval(() => goTo(carouselState.index + 1), duration);
+          progressTimer = window.setInterval(() => {
+            elapsed = Math.min(elapsed + 100, duration);
+            ui.carouselProgress.style.width = `${(elapsed / duration) * 100}%`;
+          }, 100);
+        }
+
+        ui.carouselPrev.addEventListener('click', () => goTo(carouselState.index - 1));
+        ui.carouselNext.addEventListener('click', () => goTo(carouselState.index + 1));
+        ui.medicineGallery.addEventListener('keydown', (event) => {
+          if (event.key === 'ArrowLeft') { event.preventDefault(); goTo(carouselState.index - 1); }
+          if (event.key === 'ArrowRight') { event.preventDefault(); goTo(carouselState.index + 1); }
+        });
+        ui.medicineGallery.addEventListener('pointerdown', (event) => {
+          pointerStart = event.clientX;
+          ui.medicineGallery.setPointerCapture(event.pointerId);
+        });
+        ui.medicineGallery.addEventListener('pointerup', (event) => {
+          if (pointerStart === null) return;
+          const distance = event.clientX - pointerStart;
+          if (Math.abs(distance) > 45) goTo(carouselState.index + (distance < 0 ? 1 : -1));
+          pointerStart = null;
+        });
+        updateCarousel();
+        startTimers();
+      }
 
       function escapeHtml(value) {
         return String(value)
@@ -1787,6 +1843,7 @@
       }
 
       syncStateFromUrl();
+      setupCarousel();
       render();
       window.addEventListener('popstate', () => {
         syncStateFromUrl();

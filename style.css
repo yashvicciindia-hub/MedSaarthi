@@ -1174,6 +1174,309 @@ select:focus-visible {
     }
 }
 
+/* ---------- MedSaarthi Assistant ---------- */
+.ms-chatbot {
+    position: fixed;
+    right: 28px;
+    bottom: 24px;
+    z-index: 300;
+    font-family: var(--font-body);
+}
+
+.ms-chatbot-launcher {
+    width: 62px;
+    height: 62px;
+    display: grid;
+    place-items: center;
+    border: 1px solid rgba(20, 151, 163, 0.28);
+    border-radius: 50%;
+    background: var(--white);
+    color: var(--teal-600);
+    box-shadow: 0 10px 28px rgba(11, 33, 54, 0.18), 0 0 0 5px rgba(20, 151, 163, 0.08);
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.ms-chatbot-launcher:hover {
+    transform: translateY(-3px) scale(1.04);
+    box-shadow: 0 15px 32px rgba(11, 33, 54, 0.22), 0 0 0 6px rgba(20, 151, 163, 0.1);
+}
+
+.ms-chatbot-launcher svg {
+    width: 28px;
+    height: 28px;
+    fill: none;
+    stroke: currentColor;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-width: 1.7;
+}
+
+.ms-chatbot-panel {
+    position: absolute;
+    right: 0;
+    bottom: 82px;
+    width: min(410px, calc(100vw - 40px));
+    height: min(620px, calc(100vh - 130px));
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    background: var(--paper-0);
+    border: 1px solid var(--line);
+    border-radius: 20px;
+    box-shadow: 0 20px 60px rgba(11, 33, 54, 0.2), 0 4px 14px rgba(11, 33, 54, 0.08);
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(12px) scale(0.98);
+    transform-origin: bottom right;
+    transition: opacity 0.22s ease, transform 0.22s ease;
+}
+
+.ms-chatbot-panel.open {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(0) scale(1);
+}
+
+.ms-chatbot-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 17px 17px 15px;
+    background: var(--white);
+    border-bottom: 1px solid var(--line);
+}
+
+.ms-chatbot-identity {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+}
+
+.ms-chatbot-status {
+    width: 8px;
+    height: 8px;
+    margin-top: 5px;
+    flex: none;
+    border-radius: 50%;
+    background: var(--teal-600);
+    box-shadow: 0 0 0 4px var(--teal-100);
+}
+
+.ms-chatbot-identity strong,
+.ms-chatbot-identity span {
+    display: block;
+}
+
+.ms-chatbot-identity strong {
+    color: var(--navy-900);
+    font-size: 0.88rem;
+}
+
+.ms-chatbot-identity span {
+    margin-top: 3px;
+    color: var(--blue-gray-600);
+    font-size: 0.7rem;
+}
+
+.ms-chatbot-header-actions {
+    display: flex;
+    gap: 4px;
+}
+
+.ms-chatbot-icon-btn {
+    width: 30px;
+    height: 30px;
+    display: grid;
+    place-items: center;
+    border: 1px solid transparent;
+    border-radius: 7px;
+    background: transparent;
+    color: var(--blue-gray-600);
+    font-size: 1.2rem;
+    line-height: 1;
+    cursor: pointer;
+}
+
+.ms-chatbot-icon-btn:hover {
+    background: var(--paper-50);
+    border-color: var(--line);
+    color: var(--navy-900);
+}
+
+.ms-chatbot-messages {
+    flex: 1;
+    overflow-y: auto;
+    padding: 20px 16px 14px;
+    scroll-behavior: smooth;
+}
+
+.ms-chatbot-message {
+    max-width: 88%;
+    margin: 0 0 12px;
+    padding: 11px 13px;
+    border: 1px solid var(--line);
+    border-radius: 13px 13px 13px 4px;
+    background: var(--white);
+    color: var(--ink-soft);
+    font-size: 0.82rem;
+    line-height: 1.55;
+    white-space: pre-line;
+    animation: ms-chat-message-in 0.22s ease both;
+}
+
+.ms-chatbot-message.user {
+    margin-left: auto;
+    border-color: var(--teal-600);
+    border-radius: 13px 13px 4px 13px;
+    background: var(--teal-600);
+    color: var(--white);
+}
+
+.ms-chatbot-prompt {
+    margin: 15px 0 8px;
+    color: var(--navy-900);
+    font-size: 0.75rem;
+    font-weight: 700;
+}
+
+.ms-chatbot-quick-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 7px;
+}
+
+.ms-chatbot-quick-actions button {
+    padding: 8px 10px;
+    border: 1px solid var(--line-strong);
+    border-radius: 999px;
+    background: var(--white);
+    color: var(--navy-800);
+    font: inherit;
+    font-size: 0.7rem;
+    line-height: 1.25;
+    cursor: pointer;
+    transition: border-color 0.15s ease, background 0.15s ease, color 0.15s ease;
+}
+
+.ms-chatbot-quick-actions button:hover {
+    border-color: var(--teal-600);
+    background: var(--teal-100);
+    color: var(--teal-600);
+}
+
+.ms-chatbot-typing {
+    width: fit-content;
+    display: flex;
+    gap: 4px;
+    margin: 0 0 12px;
+    padding: 13px 14px;
+    border: 1px solid var(--line);
+    border-radius: 13px 13px 13px 4px;
+    background: var(--white);
+}
+
+.ms-chatbot-typing i {
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: var(--teal-600);
+    animation: ms-chat-dot 0.9s infinite ease-in-out;
+}
+
+.ms-chatbot-typing i:nth-child(2) { animation-delay: 0.12s; }
+.ms-chatbot-typing i:nth-child(3) { animation-delay: 0.24s; }
+
+.ms-chatbot-form {
+    display: flex;
+    align-items: flex-end;
+    gap: 8px;
+    padding: 11px 12px 12px;
+    background: var(--white);
+    border-top: 1px solid var(--line);
+}
+
+.ms-chatbot-form textarea {
+    min-height: 40px;
+    max-height: 120px;
+    flex: 1;
+    resize: none;
+    padding: 10px 11px;
+    border: 1px solid var(--line-strong);
+    border-radius: 10px;
+    background: var(--paper-0);
+    color: var(--ink);
+    font: inherit;
+    font-size: 0.8rem;
+    line-height: 1.35;
+    outline: none;
+}
+
+.ms-chatbot-form textarea:focus {
+    border-color: var(--teal-600);
+    box-shadow: 0 0 0 3px var(--teal-100);
+}
+
+.ms-chatbot-form > button {
+    width: 40px;
+    height: 40px;
+    display: grid;
+    place-items: center;
+    flex: none;
+    border: none;
+    border-radius: 10px;
+    background: var(--navy-900);
+    color: var(--white);
+    cursor: pointer;
+    transition: background 0.15s ease, transform 0.15s ease;
+}
+
+.ms-chatbot-form > button:hover {
+    background: var(--teal-600);
+    transform: translateY(-1px);
+}
+
+.ms-chatbot-form > button svg {
+    width: 18px;
+    height: 18px;
+    fill: none;
+    stroke: currentColor;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-width: 1.8;
+}
+
+@keyframes ms-chat-message-in {
+    from { opacity: 0; transform: translateY(5px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes ms-chat-dot {
+    0%, 60%, 100% { opacity: 0.35; transform: translateY(0); }
+    30% { opacity: 1; transform: translateY(-3px); }
+}
+
+@media (max-width: 560px) {
+    .ms-chatbot {
+        right: 16px;
+        bottom: 16px;
+    }
+
+    .ms-chatbot-launcher {
+        width: 58px;
+        height: 58px;
+    }
+
+    .ms-chatbot-panel {
+        right: -2px;
+        bottom: 74px;
+        width: min(94vw, 410px);
+        height: min(76vh, 620px);
+        border-radius: 16px;
+    }
+}
+
 /* ---------- Map interface (products page) ---------- */
 .map-product {
     border: 1px solid var(--line);
