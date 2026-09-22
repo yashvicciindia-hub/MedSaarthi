@@ -1,4 +1,4 @@
-/* MedSaarthi — shared behaviour */
+/* MedGlobal — shared behaviour */
 (function () {
     "use strict";
 
