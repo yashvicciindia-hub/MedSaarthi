@@ -264,6 +264,62 @@ select:focus-visible {
     transition: color 0.15s ease, background 0.15s ease;
 }
 
+.nav-item {
+    position: relative;
+}
+
+.nav-dropdown-toggle {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 14px;
+    border: none;
+    background: transparent;
+    color: var(--ink-soft);
+    border-radius: var(--radius-sm);
+    font: inherit;
+    font-size: 0.92rem;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.nav-dropdown-toggle:hover,
+.nav-dropdown-toggle[aria-expanded="true"] {
+    color: var(--navy-900);
+    background: var(--paper-50);
+}
+
+.nav-caret {
+    font-size: 0.8rem;
+    transform: translateY(-1px);
+}
+
+.nav-submenu {
+    position: absolute;
+    top: calc(100% + 8px);
+    left: 0;
+    min-width: 190px;
+    list-style: none;
+    margin: 0;
+    padding: 8px;
+    background: var(--white);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-sm);
+    display: none;
+    z-index: 101;
+}
+
+.nav-item.open .nav-submenu,
+.nav-submenu:hover {
+    display: block;
+}
+
+.nav-submenu a {
+    padding: 10px 12px;
+    border-radius: 6px;
+}
+
 .nav-links a:hover {
     color: var(--navy-900);
     background: var(--paper-50);

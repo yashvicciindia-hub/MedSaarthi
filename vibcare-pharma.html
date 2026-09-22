@@ -1,0 +1,1388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vibcare Price List — MedGlobal</title>
+  <meta name="description" content="Vibcare Pharma product catalogue across specialised healthcare divisions.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .vibcare-page {
+      background: var(--paper-0);
+      color: var(--ink);
+    }
+
+    .vibcare-page .vibcare-shell {
+      max-width: 1240px;
+      margin: 0 auto;
+      padding: 0 clamp(20px, 4vw, 56px) 72px;
+    }
+
+    .vibcare-page .vibcare-hero {
+      padding: 42px 0 28px;
+      border-bottom: 1px solid var(--line);
+      background: linear-gradient(180deg, rgba(255,255,255,0.35), rgba(238,241,238,0.35));
+    }
+
+    .vibcare-page .vibcare-hero-grid {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 28px;
+      align-items: center;
+    }
+
+    .vibcare-page .vibcare-hero-visual {
+      position: relative;
+      min-height: 300px;
+      border-radius: 18px;
+      background: var(--white);
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow-md);
+      overflow: hidden;
+      transition: transform 0.35s ease, box-shadow 0.35s ease;
+    }
+
+    .vibcare-page .vibcare-hero-visual:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 18px 40px rgba(11, 33, 54, 0.16);
+    }
+
+    .vibcare-page .vibcare-hero-visual img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      filter: saturate(0.9) contrast(1.05);
+      transition: transform 0.6s ease;
+    }
+
+    .vibcare-page .vibcare-hero-visual:hover img {
+      transform: scale(1.05);
+    }
+
+    .vibcare-page .vibcare-visual-shade {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(11,33,54,0.04) 20%, rgba(11,33,54,0.5) 100%);
+      pointer-events: none;
+    }
+
+    .vibcare-page .vibcare-visual-label {
+      position: absolute;
+      top: 16px;
+      left: 16px;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(255,255,255,0.94);
+      color: var(--navy-900);
+      border-radius: 999px;
+      padding: 8px 11px;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .vibcare-page .vibcare-visual-label::before {
+      content: '';
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--green-600);
+      box-shadow: 0 0 0 4px var(--green-100);
+    }
+
+    .vibcare-page .vibcare-visual-caption {
+      position: absolute;
+      right: 16px;
+      bottom: 16px;
+      color: var(--white);
+      font-size: 0.76rem;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+    }
+
+    .vibcare-page .vibcare-float-card {
+      position: absolute;
+      left: 18px;
+      bottom: 18px;
+      right: 18px;
+      background: rgba(255,255,255,0.92);
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(18, 32, 49, 0.06);
+      border-radius: 12px;
+      padding: 12px 14px;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .vibcare-page .vibcare-float-card strong {
+      display: block;
+      font-size: 0.94rem;
+      color: var(--navy-900);
+      margin-bottom: 6px;
+    }
+
+    .vibcare-page .vibcare-float-card span {
+      color: var(--blue-gray-600);
+      font-size: 0.76rem;
+    }
+
+    .vibcare-page .vibcare-stats {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 10px;
+      margin-top: 20px;
+    }
+
+    .vibcare-page .vibcare-stat {
+      background: rgba(255,255,255,0.72);
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 13px 14px;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .vibcare-page .vibcare-stat strong {
+      display: block;
+      font-size: 1.2rem;
+      color: var(--navy-900);
+      margin-bottom: 6px;
+      font-family: var(--font-display);
+    }
+
+    .vibcare-page .vibcare-stat span {
+      color: var(--blue-gray-600);
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+    }
+
+    .vibcare-page .vibcare-breadcrumb {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+      color: var(--blue-gray-600);
+      margin-bottom: 16px;
+    }
+
+    .vibcare-page .vibcare-showcase {
+      padding: 22px 0 4px;
+    }
+
+    .vibcare-page .vibcare-showcase-head {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 12px;
+    }
+
+    .vibcare-page .vibcare-showcase-head h2 {
+      margin: 0;
+      font-size: 1.2rem;
+    }
+
+    .vibcare-page .vibcare-showcase-head p {
+      margin: 0;
+      font-size: 0.76rem;
+      color: var(--blue-gray-600);
+    }
+
+    .vibcare-page .vibcare-division-showcase {
+      display: grid;
+      grid-template-columns: repeat(6, minmax(120px, 1fr));
+      gap: 10px;
+      overflow-x: auto;
+      padding: 2px 2px 8px;
+      scrollbar-width: thin;
+    }
+
+    .vibcare-page .vibcare-division-card {
+      position: relative;
+      min-height: 112px;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      background: var(--navy-900);
+      color: var(--white);
+      cursor: pointer;
+      text-align: left;
+      padding: 0;
+      transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+    }
+
+    .vibcare-page .vibcare-division-card:hover,
+    .vibcare-page .vibcare-division-card.active {
+      transform: translateY(-3px);
+      border-color: var(--teal-500);
+      box-shadow: var(--shadow-md);
+    }
+
+    .vibcare-page .vibcare-division-card img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.7;
+      transition: transform 0.35s ease, opacity 0.25s ease;
+    }
+
+    .vibcare-page .vibcare-division-card:hover img,
+    .vibcare-page .vibcare-division-card.active img {
+      transform: scale(1.08);
+      opacity: 0.86;
+    }
+
+    .vibcare-page .vibcare-division-card::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(11,33,54,0.05), rgba(11,33,54,0.86));
+    }
+
+    .vibcare-page .vibcare-division-card span {
+      position: absolute;
+      z-index: 1;
+      left: 11px;
+      right: 8px;
+      bottom: 10px;
+      font-size: 0.72rem;
+      font-weight: 700;
+      line-height: 1.2;
+    }
+
+    .vibcare-page .vibcare-breadcrumb a {
+      color: var(--navy-700);
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .vibcare-page .vibcare-badge {
+      display: inline-flex;
+      align-items: center;
+      align-items: center;
+      gap: 8px;
+      background: var(--teal-100);
+      color: var(--teal-600);
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      border-radius: 999px;
+      padding: 7px 10px;
+      margin-bottom: 12px;
+    }
+
+    .vibcare-page .vibcare-hero h1 {
+      font-size: clamp(1.8rem, 3vw, 2.65rem);
+      margin-bottom: 10px;
+    }
+
+    .vibcare-page .vibcare-hero p {
+      font-size: 0.9rem;
+      max-width: 64ch;
+    }
+
+    .vibcare-page .vibcare-card {
+      background: var(--white);
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .vibcare-page .vibcare-toolbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      padding: 18px 0 14px;
+      flex-wrap: wrap;
+    }
+
+    .vibcare-page .vibcare-search {
+      flex: 1 1 360px;
+      min-width: 220px;
+    }
+
+    .vibcare-page .vibcare-search-wrap {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      border: 1px solid var(--line-strong);
+      border-radius: 12px;
+      background: var(--white);
+      padding: 12px 14px;
+      min-height: 48px;
+    }
+
+    .vibcare-page .vibcare-search-wrap svg {
+      width: 17px;
+      height: 17px;
+      color: var(--blue-gray-600);
+      flex: none;
+    }
+
+    .vibcare-page .vibcare-search input {
+      border: none;
+      background: transparent;
+      width: 100%;
+      font: inherit;
+      color: var(--ink);
+      outline: none;
+    }
+
+    .vibcare-page .vibcare-result-meta {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      flex-wrap: wrap;
+      color: var(--ink-soft);
+      font-size: 0.9rem;
+    }
+
+    .vibcare-page .vibcare-result-count {
+      font-weight: 700;
+      color: var(--navy-900);
+    }
+
+    .vibcare-page .vibcare-sort {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      min-width: 180px;
+    }
+
+    .vibcare-page .vibcare-sort label {
+      font-size: 0.8rem;
+      color: var(--blue-gray-600);
+      font-weight: 600;
+    }
+
+    .vibcare-page .vibcare-sort select {
+      width: 100%;
+      border: 1px solid var(--line-strong);
+      border-radius: 10px;
+      background: var(--white);
+      padding: 10px 12px;
+      color: var(--ink);
+      font: inherit;
+    }
+
+    .vibcare-page .vibcare-topbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+      margin: 8px 0 12px;
+      flex-wrap: wrap;
+    }
+
+    .vibcare-page .vibcare-tabs {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      overflow-x: auto;
+      padding-bottom: 6px;
+      scrollbar-width: thin;
+    }
+
+    .vibcare-page .vibcare-tab-btn,
+    .vibcare-page .vibcare-filter-pill {
+      border: 1px solid var(--line);
+      background: var(--white);
+      color: var(--ink-soft);
+      border-radius: 999px;
+      padding: 10px 14px;
+      font: inherit;
+      font-weight: 600;
+      cursor: pointer;
+      transition: color 0.15s ease, border-color 0.15s ease, background 0.15s ease;
+      white-space: nowrap;
+    }
+
+    .vibcare-page .vibcare-tab-btn {
+      min-height: 44px;
+    }
+
+    .vibcare-page .vibcare-tab-btn.active,
+    .vibcare-page .vibcare-filter-pill.active {
+      background: var(--teal-100);
+      border-color: var(--teal-600);
+      color: var(--teal-600);
+    }
+
+    .vibcare-page .vibcare-filter-bar {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-top: 16px;
+      margin-bottom: 18px;
+    }
+
+    .vibcare-page .vibcare-table-wrap {
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      background: var(--white);
+      overflow: hidden;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .vibcare-page .vibcare-table {
+      width: 100%;
+      border-collapse: collapse;
+      table-layout: fixed;
+    }
+
+    .vibcare-page .vibcare-table thead th {
+      background: var(--paper-50);
+      color: var(--navy-900);
+      font-size: 0.8rem;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      text-align: left;
+      border-bottom: 1px solid var(--line);
+      padding: 16px 18px;
+      font-weight: 700;
+    }
+
+    .vibcare-page .vibcare-table tbody td {
+      color: var(--ink-soft);
+      padding: 14px 18px;
+      border-bottom: 1px solid var(--line);
+      vertical-align: top;
+      word-break: break-word;
+    }
+
+    .vibcare-page .vibcare-row {
+      cursor: pointer;
+      transition: background 0.15s ease, transform 0.15s ease;
+    }
+
+    .vibcare-page .vibcare-row:hover {
+      background: rgba(20, 151, 163, 0.04);
+    }
+
+    .vibcare-page .vibcare-row:last-child td {
+      border-bottom: none;
+    }
+
+    .vibcare-page .vibcare-item-name {
+      font-weight: 700;
+      color: var(--navy-900);
+    }
+
+    .vibcare-page .vibcare-col-item { width: 36%; }
+    .vibcare-page .vibcare-col-packing { width: 18%; }
+    .vibcare-page .vibcare-col-composition { width: 31%; }
+    .vibcare-page .vibcare-col-gst { width: 15%; }
+
+    .vibcare-page .vibcare-empty {
+      padding: 28px 18px;
+      color: var(--ink-soft);
+      text-align: center;
+    }
+
+    .vibcare-page .vibcare-pagination {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding-top: 20px;
+      flex-wrap: wrap;
+      color: var(--ink-soft);
+      font-size: 0.9rem;
+    }
+
+    .vibcare-page .vibcare-pagination-controls {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .vibcare-page .vibcare-page-btn {
+      border: 1px solid var(--line);
+      background: var(--white);
+      color: var(--navy-900);
+      border-radius: 10px;
+      min-width: 38px;
+      min-height: 38px;
+      padding: 6px 12px;
+      font: inherit;
+      cursor: pointer;
+    }
+
+    .vibcare-page .vibcare-page-btn[disabled] {
+      opacity: 0.5;
+      cursor: default;
+    }
+
+    .vibcare-page .vibcare-page-btn.active {
+      background: var(--navy-900);
+      color: var(--white);
+      border-color: var(--navy-900);
+    }
+
+    .vibcare-page .vibcare-page-number {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 38px;
+      min-height: 38px;
+      border-radius: 10px;
+      border: 1px solid var(--line);
+      background: var(--white);
+      color: var(--navy-900);
+      font-weight: 600;
+    }
+
+    .vibcare-page .vibcare-drawer-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(11, 33, 54, 0.35);
+      display: none;
+      z-index: 200;
+    }
+
+    .vibcare-page .vibcare-drawer-overlay.open {
+      display: block;
+    }
+
+    .vibcare-page .vibcare-drawer {
+      position: fixed;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      width: min(440px, 92vw);
+      background: var(--white);
+      border-left: 1px solid var(--line);
+      box-shadow: var(--shadow-lg);
+      transform: translateX(100%);
+      transition: transform 0.2s ease;
+      z-index: 201;
+      display: flex;
+      flex-direction: column;
+      overflow-y: auto;
+    }
+
+    .vibcare-page .vibcare-drawer.open {
+      transform: translateX(0);
+    }
+
+    .vibcare-page .vibcare-drawer-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+      padding: 20px 20px 14px;
+      border-bottom: 1px solid var(--line);
+      position: sticky;
+      top: 0;
+      background: var(--white);
+      z-index: 1;
+    }
+
+    .vibcare-page .vibcare-drawer-header h3 {
+      margin: 0;
+      font-size: 1.2rem;
+    }
+
+    .vibcare-page .vibcare-close-btn {
+      border: none;
+      background: var(--paper-50);
+      color: var(--navy-900);
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      cursor: pointer;
+      font-size: 1.15rem;
+    }
+
+    .vibcare-page .vibcare-drawer-body {
+      padding: 20px;
+    }
+
+    .vibcare-page .vibcare-detail-grid {
+      display: grid;
+      gap: 14px;
+      margin-bottom: 20px;
+    }
+
+    .vibcare-page .vibcare-detail-row {
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 12px 14px;
+      background: var(--paper-0);
+    }
+
+    .vibcare-page .vibcare-detail-label {
+      display: block;
+      color: var(--blue-gray-600);
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      margin-bottom: 4px;
+    }
+
+    .vibcare-page .vibcare-detail-value {
+      color: var(--ink);
+      font-weight: 600;
+      line-height: 1.5;
+      word-break: break-word;
+    }
+
+    .vibcare-page .vibcare-copy-btn {
+      border: 1px solid var(--teal-600);
+      background: var(--teal-100);
+      color: var(--teal-600);
+      border-radius: 10px;
+      padding: 10px 12px;
+      font: inherit;
+      font-weight: 700;
+      cursor: pointer;
+      width: 100%;
+    }
+
+    .vibcare-page .vibcare-toast {
+      position: fixed;
+      right: 20px;
+      bottom: 20px;
+      background: var(--navy-900);
+      color: var(--white);
+      padding: 10px 14px;
+      border-radius: 10px;
+      box-shadow: var(--shadow-md);
+      opacity: 0;
+      transform: translateY(8px);
+      pointer-events: none;
+      transition: opacity 0.2s ease, transform 0.2s ease;
+      z-index: 210;
+      font-size: 0.85rem;
+      font-weight: 600;
+    }
+
+    .vibcare-page .vibcare-toast.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .vibcare-page .vibcare-search input,
+    .vibcare-page .vibcare-sort select {
+      font-size: 0.84rem;
+    }
+
+    .vibcare-page .vibcare-tab-btn,
+    .vibcare-page .vibcare-filter-pill {
+      font-size: 0.78rem;
+      padding: 8px 11px;
+    }
+
+    .vibcare-page .vibcare-table thead th {
+      font-size: 0.68rem;
+      padding: 12px 16px;
+    }
+
+    .vibcare-page .vibcare-table tbody td {
+      font-size: 0.82rem;
+      padding: 11px 16px;
+    }
+
+    .vibcare-page .vibcare-pagination {
+      font-size: 0.78rem;
+    }
+
+    .vibcare-page .vibcare-page-btn,
+    .vibcare-page .vibcare-page-number {
+      min-width: 34px;
+      min-height: 34px;
+      font-size: 0.78rem;
+    }
+
+    @media (max-width: 900px) {
+      .vibcare-page .vibcare-table-wrap {
+        overflow-x: auto;
+      }
+
+      .vibcare-page .vibcare-table {
+        min-width: 760px;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .vibcare-page .vibcare-search,
+      .vibcare-page .vibcare-sort {
+        width: 100%;
+      }
+
+      .vibcare-page .vibcare-result-meta {
+        width: 100%;
+        justify-content: space-between;
+      }
+
+      .vibcare-page .vibcare-pagination {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+  </style>
+</head>
+<body class="vibcare-page">
+  <nav class="nav">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-brand"><img class="brand-logo" src="assets/MedSaarthi-logo.png" alt="MedGlobal"></a>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="platform.html">Platform</a></li>
+        <li class="nav-item has-submenu">
+          <button class="nav-dropdown-toggle" type="button" aria-expanded="false" aria-controls="products-menu">
+            <span>Products</span>
+            <span class="nav-caret">▾</span>
+          </button>
+          <ul class="nav-submenu" id="products-menu">
+            <li><a href="products.html">Our Products</a></li>
+            <li><a href="vibcare-pharma.html">Vibcare Price List</a></li>
+          </ul>
+        </li>
+        <li><a href="ecosystem.html">Ecosystem</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+      <div class="nav-cta">
+        <a href="platform.html" class="btn btn-secondary">Explore Platform</a>
+        <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <header class="vibcare-hero">
+    <div class="vibcare-shell vibcare-hero-grid">
+      <div>
+        <nav class="vibcare-breadcrumb" aria-label="Breadcrumb">
+          <a href="products.html">Products</a>
+          <span>/</span>
+          <span>Vibcare Price List</span>
+        </nav>
+        <div class="vibcare-badge">Vibcare Pharma</div>
+        <h1>Vibcare Pharma — Product Catalogue</h1>
+        <p>Explore Vibcare Pharma products across its specialised healthcare divisions.</p>
+        <div class="vibcare-stats" aria-label="Catalogue summary">
+          <div class="vibcare-stat">
+            <strong>562</strong>
+            <span>Products</span>
+          </div>
+          <div class="vibcare-stat">
+            <strong>6</strong>
+            <span>Divisions</span>
+          </div>
+          <div class="vibcare-stat">
+            <strong>25</strong>
+            <span>Per Page</span>
+          </div>
+        </div>
+      </div>
+      <div class="vibcare-hero-visual" aria-label="Healthcare products visual">
+        <img src="https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?auto=format&fit=crop&w=900&q=85" alt="Colourful pharmaceutical tablets arranged on a clean surface">
+        <div class="vibcare-visual-shade"></div>
+        <div class="vibcare-visual-label">Verified catalogue</div>
+        <div class="vibcare-visual-caption">Healthcare, organised clearly</div>
+        <div class="vibcare-float-card">
+          <strong>One catalogue. Six divisions.</strong>
+          <span>Browse products by therapy, form and division.</span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <section class="vibcare-showcase" aria-label="Explore healthcare divisions">
+    <div class="vibcare-shell">
+      <div class="vibcare-showcase-head">
+        <div>
+          <h2>Explore by healthcare division</h2>
+          <p>Select a visual category to jump into its catalogue.</p>
+        </div>
+      </div>
+      <div class="vibcare-division-showcase" id="vibcare-division-showcase">
+        <button class="vibcare-division-card active" type="button" data-showcase-division="PRIMA">
+          <img src="https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?auto=format&fit=crop&w=400&q=80" alt="Tablets for general healthcare">
+          <span>PRIMA<br>General care</span>
+        </button>
+        <button class="vibcare-division-card" type="button" data-showcase-division="CURE">
+          <img src="https://images.unsplash.com/photo-1505751172876-fa1923c5c528?auto=format&fit=crop&w=400&q=80" alt="Cardio healthcare monitoring">
+          <span>CURE<br>Cardio-diabetic</span>
+        </button>
+        <button class="vibcare-division-card" type="button" data-showcase-division="GRACE">
+          <img src="https://images.unsplash.com/photo-1556228578-8c89e6adf883?auto=format&fit=crop&w=400&q=80" alt="Dermatology skincare products">
+          <span>GRACE<br>Derma</span>
+        </button>
+        <button class="vibcare-division-card" type="button" data-showcase-division="MIND">
+          <img src="https://images.unsplash.com/photo-1559757175-0eb30cd8c063?auto=format&fit=crop&w=400&q=80" alt="Neurology healthcare research">
+          <span>MIND<br>CNS</span>
+        </button>
+        <button class="vibcare-division-card" type="button" data-showcase-division="OPTHO">
+          <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=400&q=80" alt="Clinical healthcare setting for eye care">
+          <span>OPTHO<br>Eye care</span>
+        </button>
+        <button class="vibcare-division-card" type="button" data-showcase-division="NURALZ">
+          <img src="https://images.unsplash.com/photo-1515377905703-c4788e51af15?auto=format&fit=crop&w=400&q=80" alt="Natural botanical ingredients for Ayurvedic care">
+          <span>NURALZ<br>Ayurvedic</span>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <main class="vibcare-shell" aria-live="polite">
+    <section class="vibcare-toolbar" aria-label="Catalogue controls">
+      <div class="vibcare-search">
+        <label class="sr-only" for="vibcare-search-input">Search item name or composition</label>
+        <div class="vibcare-search-wrap">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.35-4.35"/></svg>
+          <input id="vibcare-search-input" type="search" placeholder="Search item name or composition…" autocomplete="off">
+        </div>
+      </div>
+      <div class="vibcare-result-meta">
+        <span class="vibcare-result-count" id="vibcare-result-count">0 results</span>
+      </div>
+      <div class="vibcare-sort">
+        <label for="vibcare-sort-select">Sort by</label>
+        <select id="vibcare-sort-select" aria-label="Sort product list">
+          <option value="pdfOrder">PDF Order</option>
+          <option value="itemAsc">Item A–Z</option>
+          <option value="itemDesc">Item Z–A</option>
+          <option value="category">Category</option>
+          <option value="packing">Packing</option>
+        </select>
+      </div>
+    </section>
+
+    <section aria-label="Division selector" class="vibcare-topbar">
+      <div class="vibcare-tabs" id="vibcare-division-tabs" role="tablist" aria-label="Product divisions">
+        <button class="vibcare-tab-btn active" type="button" role="tab" aria-selected="true" data-division="PRIMA">PRIMA General</button>
+        <button class="vibcare-tab-btn" type="button" role="tab" aria-selected="false" data-division="CURE">CURE Cardio-Diabetic</button>
+        <button class="vibcare-tab-btn" type="button" role="tab" aria-selected="false" data-division="GRACE">GRACE Derma</button>
+        <button class="vibcare-tab-btn" type="button" role="tab" aria-selected="false" data-division="MIND">MIND CNS</button>
+        <button class="vibcare-tab-btn" type="button" role="tab" aria-selected="false" data-division="OPTHO">OPTHO Eye</button>
+        <button class="vibcare-tab-btn" type="button" role="tab" aria-selected="false" data-division="NURALZ">NURALZ Ayurvedic</button>
+      </div>
+    </section>
+
+    <section aria-label="Category filters" class="vibcare-filter-bar" id="vibcare-filter-bar"></section>
+
+    <section class="vibcare-table-wrap" aria-label="Vibcare product catalogue">
+      <table class="vibcare-table">
+        <thead>
+          <tr>
+            <th class="vibcare-col-item">Item</th>
+            <th class="vibcare-col-packing">Packing</th>
+            <th class="vibcare-col-composition">Composition</th>
+            <th class="vibcare-col-gst">GST</th>
+          </tr>
+        </thead>
+        <tbody id="vibcare-table-body"></tbody>
+      </table>
+      <div id="vibcare-empty-state" class="vibcare-empty" hidden>No products match the current selection.</div>
+    </section>
+
+    <div class="vibcare-pagination" aria-live="polite">
+      <div id="vibcare-pagination-summary">Showing 0–0 of 0 products</div>
+      <div class="vibcare-pagination-controls" id="vibcare-pagination-controls"></div>
+    </div>
+  </main>
+
+  <div class="vibcare-drawer-overlay" id="vibcare-drawer-overlay"></div>
+  <aside class="vibcare-drawer" id="vibcare-drawer" aria-hidden="true" aria-label="Product details">
+    <div class="vibcare-drawer-header">
+      <h3 id="vibcare-drawer-title">Product details</h3>
+      <button type="button" class="vibcare-close-btn" id="vibcare-close-btn" aria-label="Close details">×</button>
+    </div>
+    <div class="vibcare-drawer-body">
+      <div class="vibcare-detail-grid">
+        <div class="vibcare-detail-row">
+          <span class="vibcare-detail-label">Product Name</span>
+          <span class="vibcare-detail-value" id="vibcare-detail-name">—</span>
+        </div>
+        <div class="vibcare-detail-row">
+          <span class="vibcare-detail-label">Division</span>
+          <span class="vibcare-detail-value" id="vibcare-detail-division">—</span>
+        </div>
+        <div class="vibcare-detail-row">
+          <span class="vibcare-detail-label">Category</span>
+          <span class="vibcare-detail-value" id="vibcare-detail-category">—</span>
+        </div>
+        <div class="vibcare-detail-row">
+          <span class="vibcare-detail-label">Packing</span>
+          <span class="vibcare-detail-value" id="vibcare-detail-packing">—</span>
+        </div>
+        <div class="vibcare-detail-row">
+          <span class="vibcare-detail-label">Composition</span>
+          <span class="vibcare-detail-value" id="vibcare-detail-composition">—</span>
+        </div>
+        <div class="vibcare-detail-row">
+          <span class="vibcare-detail-label">GST</span>
+          <span class="vibcare-detail-value" id="vibcare-detail-gst">—</span>
+        </div>
+      </div>
+      <button class="vibcare-copy-btn" type="button" id="vibcare-copy-composition">Copy Composition</button>
+    </div>
+  </aside>
+
+  <div class="vibcare-toast" id="vibcare-toast" role="status" aria-live="polite">Composition copied</div>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <div class="footer-brand"><img class="brand-logo" src="assets/MedSaarthi-logo.png" alt="MedSaarthi"></div>
+          <p style="max-width:32ch; color:#9FB3C4; font-size:0.9rem;">Building India's digital infrastructure for affordable generic medicines.</p>
+        </div>
+        <div>
+          <h4>Platform</h4>
+          <ul>
+            <li><a href="platform.html">Architecture</a></li>
+            <li><a href="products.html">Products</a></li>
+            <li><a href="ecosystem.html">Ecosystem</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Company</h4>
+          <ul>
+            <li><a href="about.html">About</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Address</h4>
+          <ul>
+            <li>13, Institutional Area, Lodhi Road, New Delhi 110003</li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2026 MedGlobal. All rights reserved.</span>
+        <span>Empowering every citizen through Access, Trust, Technology &amp; Transparency.</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+  <script src="vibcare-details.js"></script>
+  <script>
+    (function () {
+      'use strict';
+
+      const rawData = [
+        { division: 'PRIMA', divisionName: 'General', category: 'Tablets', items: ['ACRIMOL™','ACRIMOL MR™','ACRIMOL PLUS™','ACRIMOL SP™','ACRIMOL TH4™','ACRIMOL SR 200™','ACTAVIB 100','ALFUVIB','ALLYVIB','AZIVIB 250™','AZIVIB 250 LB™','AZIVIB 500™','AZIVIB 500 LB™','AZIVIB FS KIT™','CARVICAL™','CARVICAL PLUS™','CARVICAL ALPHA™','CEDOVIB 500','CEDOVIB CV','CEFVIB 100™','CEFVIB 200™','CEFVIB 200™','CEFVIB CV™','CEFVIB LB™','CEFVIB O™','CEFVIB O LB™','CETIVIB 10','CHYMOVIB FORTE','CINARVIB D','CIPROVIB 500','CLARIVIB 500','DAZIVIB','DAZIVIB M','DEFDOZE 6','DEFDOZE 30','DROVIB MF','DOXIVIB LB','DOXIVIB AM','EDLOVIB 400','ESOVIB 40','ESOVIB HP','ETOLOL 90','ETOLOL 120','ETOLOL P','ETOLOL TH','FAROVIB 200','FEBUVIB 40','FERLIB XT™','FEROVIB XT','FEVOVIB','FEXOVIB 120','FEXOVIB 180','FEXOVIB AM','FLAVOVIB 200','FLUPOVIB P','FLUVIB 150','FLUVIB 200','FOLIVIB 5','FOLIVIB ACTIV','FOLIVIB PLUS','HEPOVIB L','IBDOVIB KIT','IVERVIB 12','KELOVIB DT','LESUVIB 25','LEVOVIB','LEVOVIB 10','LIZOVIB 600','LORIVIB P','LOXOFIB 500™','LUMIVIB','MEFOVAS P','MONTIVIB LC™','MONTIVIB LC KID™','MONTIVIB AL™','MONTIVIB FX™','MOXIVIB CV KID™','MOXIVIB CV 625™','MOXIVIB CV 625™','MOXIVIB CV 375™','MOXIVIB CV 625','MOXIVIB 625 DUO™','NEUROVIB OD','NIMOVIB 100 MD','NIMOVIB P','NIMOVIB PLUS','NITROVIB 100','NORVIB 5 *','ODOXICEF 100™ DT','ODOXICEF 200™ DT','ODOXICEF O™','ODOXICEF CV™','OFLARB 200','OFLARB O','ORIJOINT','PANTAVIB 40™','PANTAVIB D™','PARAVIB 500','PARAVIB 650','PARAVIB 1000','PARAVIB TOTAL ADVANCE','PIXIVIB','PREDOVIB 4','PREDOVIB 8','PRUVIB 2','RABEVIB 20™','RABEVIB D™','RIFAVIB 400','SALZOVIB 500','SULTAVIB 375','THIOVIB A 4™','THIOVIB A 8™','TOLPIVIB 150','TOUXVIB DMR','TRIULTRA™','UDOVICE 300','URIVIB T','VERTIVIB 8','VERTIVIB 16','VIBCQS 200','VIBDOXO 400','VIBODOXO M','VIBNEMIC MF™','VIBOHEAL','VIBOHEAL D','VIBOSPAS','VIBOZINC','VIBMOXI 400','VOLVIB P','VOLVIB PLUS','VOLVIB SP','VOLVIB MR','VOMIVIB MD 4','VORMIB 400','VORMIB PLUS'] },
+        { division: 'PRIMA', divisionName: 'General', category: 'Capsules', items: ['ACRIMOL RB','CARVICAL D3 60K SOFTGEL™','CARVICAL FORTE','CARVICAL K27 SOFTGEL','CARVIFOL','COQVIB SOFTGEL','DOBIVIB 500','ESOVIB DSR','ESOVIB L','MOXIVIB 500™','MULTIVIB™','MULTIVIB G™','MULTIVIB 4G™ SOFTGEL','MULTIVIB 5G™ SOFTGEL','NEUROVIB FORTE SOFTGEL™','NEUROVIB ALPHA','OMEGAVIB SOFTGEL','OMIVIB 20','OMIVIB D','ORLIVIB 120','PANTAVIB DSR™','PANTAVIB L™','PHYLOVIB','PREBOVIB','RABEVIB DSR™','RABEVIB DSR','RABEVIB IT™','RABEVIB L™','SILDOVIB 4','SILDOVIB 8','SILDOVIB D 8','VIBLYCO SOFTGEL','ZOPROG 200 SOFTGEL'] },
+        { division: 'PRIMA', divisionName: 'General', category: 'Syrups', items: ['ACRIMOL SUSPENSION™','AZIVIB SUSPENSION','BROXOVIC DX™','BROXOVIC LS','BROXOVIC LS™','BROXOVIC™','CARVICAL','CARVICAL D3 SHOTS™','CARVICAL DROPS™','CARVIFOL','COLIVIB DROPS','CREMOVIB PLUS','DEFDOZE SUSPENSION','FEMIVIB','FERLIB DROPS','FERLIB™','FEVOVIB DROPS™','FEVOVIB SUSPENSION™','GELOVIB™','HAEMOVIB','HEPOVIB','LAXIVIB™','LAXIVIB 100ml™','LYCOVIB','MAGOVIB','MEFOVAS P','MEFOVAS P DS','MONTIVIB SYRUP™','MUCOVIB','MULTIVIB 100™','MULTIVIB DROPS','MULTIVIB™','OFLARB','OFLARB MS','PARAVIB SUSPENSION','PARAVIB PLUS','PICOVIB','SUCOVIB O','TOUXVIB','TOUXVIB BR','UROVIB B6','VIBAPTI','VIBLINCTUS','VIBOCOM L','VIBOTUS','VIBTRAL','VOMIVIB','VORMIB','ZYMOVIB','ZYMOVIB 100ml'] },
+        { division: 'PRIMA', divisionName: 'General', category: 'Dry Syrups', items: ['CEDOVIB 125 WFI','CEFVIB™ DRY SYRUP','CEFVIB™ WFI DRY SYRUP','CEFVIB LB™ WFI DRY SYRUP','CEFVIB™ 100 DRY SYRUP','CEFVIB™ O WFI','MOXIVIB CV DRY SYRUP','MOXIVIB CV WFI DRY SYRUP','MOXIVIB CV PLUS WFI DRY SYRUP','ODOXICEF™ DRY SYRUP','ODOXICEF™ WFI DRY SYRUP','ODOXICEF™ 100 DRY SYRUP','ODOXICEF™ CV WFI','VIBOLAC'] },
+        { division: 'PRIMA', divisionName: 'General', category: 'Liquid Vials (Inj.)', items: ['AMIVIB 500','PREDOVIB 40','VIBCORT 40'] },
+        { division: 'PRIMA', divisionName: 'General', category: 'Ampoules (Inj.)', items: ['CARVICAL D3','CITIVIB','DECOVIB 25','DECOVIB 50','DROVIB','FERLIB','HEPOVIB','LESUVIB','NETIVIB 10','NEUROVIB™ BLISTER PACK','NEUROVIB™ DISPO PACK','NEUROVIB PLUS™ DISPO PACK','NEUROVIB 2500™ DISPO PACK','PIXIVIB','VIBNEMIC 500','VIBOGEST 500','VIBTHER','VOLVIB','VOMIVIB'] },
+        { division: 'PRIMA', divisionName: 'General', category: 'Dry Injections', items: ['AZTROVIB 1000','CEDOVIB 1.5','CEPOVIB S 1.5','DOXIVIB 100','ESOVIB','HYDROVIB 100','IMIVIB','MEROVIB 1000™','MOXIVIB CV 1.2','PANTAVIB™','RABEVIB 20','VIBONATE','VIBOTAZ 4.5','VIROVIB','ZARDCEF 1gm™','ZARDCEF 250mg™','ZARDCEF 500mg™','ZARDCEF S™','ZARDCEF S 375™','ZARDCEF S 750™','ZARDCEF T™'] },
+        { division: 'PRIMA', divisionName: 'General', category: 'Infusions', items: ['MANNITOL WITH','NORMAL SALINE','OFLARB IV','PARAVIB IV'] },
+        { division: 'PRIMA', divisionName: 'General', category: 'Nasal Sprays / Respules', items: ['FLUTIVIB NASAL SPRAY','MOTOVIB NASAL SPRAY','BUDOVIB RESPULES'] },
+        { division: 'PRIMA', divisionName: 'General', category: 'Protein Powders / Sachets', items: ['ARGIVIB','CARVICAL D3™','CHOCOVIB','CHOCOVIB SUGAR FREE','COLLAGIVIB','ENERGYVIB','LAXIVIB POWDER','SACHOVIB L','VANLIVIB DHA','VIBOLAC'] },
+        { division: 'PRIMA', divisionName: 'General', category: 'Gels / Oils', items: ['ORTHOVIB OIL','VOLVIB™'] },
+        { division: 'CURE', divisionName: 'Cardio-Diabetic', category: 'Tablets', items: ['AMLOVIB 5','AMLOVB 10','AMLOVIB AT','AMLOVIB H','ATOVIB 10™','ATOVIB 20™','ATOVIB 40™','CILNIVIB 10','CLOPIVIB 75','CLOPIVIB A 75','DAPAVIB','GLIVIB M','LOSAVIB 50','LOSAVIB A','LOSAVIB H','METOVIB SR 1000™','METOVIB SR 500™','NEBIVIB 5','OLMIVIB 20','OLMIVIB 40','OLMIVIB H 20','RAMIVIB 2.5','RAMIVIB 5','RAMIVIB H','ROSUVIB 10™','ROSUVIB 20™','ROSUVIB F™','ROSUVIB GOLD 10™','SAXAVIB','SAXAVIB M 500','TELMIVIB 40™','TELMIVIB AM™','TELMIVIB H™','TELMIVIB H 80™','TELMIVIB CH™','TELMIVIB CL™','TELMIVIB TRIO™','TENLIVIB','TENLIVIB M','THYROVIB 12.5','THYROVIB 25','THYROVIB 50','THYROVIB 75','THYROVIB 100','TORVIB 10','TORVIB 20','VIBOLOL 50','VIBOLOL PR 25 **','VILDAVIB 50','VILDAVIB M','VIGLIM 1™','VIGLIM 2™','VIGLIM M1™','VIGLIM M2™','VIGLIM M1 FORTE™','VIGLIM M2 FORTE™','VIGLIM MP1™','VIGLIM MP2™','VOGLIVIB 0.2 MF','VOGLIVIB 0.3 MF'] },
+        { division: 'GRACE', divisionName: 'Derma', category: 'Tubes', items: ['CLINIVIB A','CLINIVIB N','DAPOVIB **','FUNGIVICE PLUS','KETOVIB','KETOVIB K5','KOZYVIB','KOZYVIB B','KOZYVIB PLUS','LULIVIB','LULIVIB 30','MELAVIB','MOISTOVIB CREAM','MOTOVIB','MUPIVIB','SERTAVIB','TERBIVICE™','VIAFLUT','VIBCLOP','VIBCLOP MN','VIBGRAF','XENODAC','XENOSCAB'] },
+        { division: 'GRACE', divisionName: 'Derma', category: 'Tablets & Capsules', items: ['CLINIVIB 300','EBAVIB 10','EVOVIB O3','FUNGIVICE 100','FUNGIVICE 200','HYDRUVIA 10','HYDRUVIA 25','KETOVIB','LEVOVIB','TERBIVICE™','TRETOVIB 10','TRETOVIB 20','VIBOHAIR','VIROVIB'] },
+        { division: 'GRACE', divisionName: 'Derma', category: 'Syrups, Lotions & Powders', items: ['CALMIVIB','DERMAVIB','FUNGIVICE DUSTING POWDER','GAMAVIB LOTION','GAMAVIB P LOTION','HYDRUVIA','KETOVIB','KETOVIB DUSTING POWDER','LULIVIB LOTION','PHOTOVIB','KOZYVIB DUSTING POWDER','KOZYVIB B LOTION','MOISTOVIB LOTION','VIBCLOP S LOTION','VIBWASH','XENOSCAB LOTION','XILOVIB 2% **','XILOVIB 5%'] },
+        { division: 'GRACE', divisionName: 'Derma', category: 'Soaps', items: ['EVOVIB SOAP','KETOVIB SOAP','XENOSCAB SOAP'] },
+        { division: 'GRACE', divisionName: 'Derma', category: 'Sanitizer and Face Mask', items: ['VIBPURE 50 ML FLIP TOP CAP','VIBPURE 100 ML FLIP TOP CAP','VIBPURE 200 ML FLIP TOP CAP','VIBPURE 500 ML FLIP TOP CAP','VIBPURE 500 ML PUSH PUMP','VIBPURE 5 LTR','OUTDOOR MASK BLACK WILDCRAFT','OUTDOOR MASK GREY WILDCRAFT','OUTDOOR MASK BLUE WILDCRAFT','OUTDOOR MASK RED WILDCRAFT'] },
+        { division: 'GRACE', divisionName: 'Derma', category: 'Dental Range', items: ['DENTOVIB','HEXOVIB™','ORAVIB','VIBODINE'] },
+        { division: 'MIND', divisionName: 'CNS', category: 'Tablets', items: ['CITIVIB P','DIVOVIB ER 500','DULOVIB 30','ETIZOVIB 0.5','ETIZOVIB PLUS 10','FLUNIVIB 10','GABAVIB™','GABAVIB NT™','LONAVIB MD 0.25','LONAVIB MD 0.5','LOPOVIB 1','LOPOVIB 2','MIGOVIB 40','MIRTAVIB 15','NORMAVIB','OLOVIB MD 10','OLOVIB MD 5','OXIVIB 300','QUTRIVIB 50','RESPOVIB 2','RESPOVIB PLUS','VALPOVIB CR 200','VALPOVIB CR 300','VALPOVIB CR 500','VENLAVIB 37.5','VENLAVIB 75','VIBACETAM 800','VIBATRYP 10','VIBATRYP 25','VIBATRYP H','VIBOPARK 2','VIBOPRIDE 100','VIBPREG NT','VIBPREG MNT','VIBPREG M FORTE','VIBOPIL 500','XETOVIB CR 12.5','XETOVIB CR 25','XITOLOL 10','XITOLOL 5','XITOLOL PLUS','ZAMOVIB 10','ZAMOVIB 5','ZOVISERT 100','ZOVISERT 50'] },
+        { division: 'MIND', divisionName: 'CNS', category: 'Capsules', items: ['MIGOVIB PLUS','VIBODEP 20','VIBPREG 75™ **','VIBPREG M 75™'] },
+        { division: 'OPTHO', divisionName: 'Eye', category: 'Eye Drops', items: ['VIBFLUR EYE','VIBKETO EYE','VIBKETO M EYE','VIBOKUL EYE DROP','VIBMOIST EYE','VIBMOXI EYE','VIBMOXI D EYE','VIBMOXI LP EYE','VIBMOXI P EYE','VIBNATA EYE','VIBOGAT EYE','VIBOLOP 0.1 EYE','VIBOLOP 0.2 EYE','VIBONEP EYE','VIBOTIM EYE','VIBTEARS EYE','VIBTEARS PLUS','VIBTOBRA EYE','VIBTOBRA F EYE','VIBTROPAC EYE'] },
+        { division: 'OPTHO', divisionName: 'Eye', category: 'Eye Ointments', items: ['VIBMOXI EYE OINTMENT','RETIVIB H'] },
+        { division: 'OPTHO', divisionName: 'Eye', category: 'Nasal Drops', items: ['NASOVIB','VIBOTRO','WAXOVIB','OTOVIB'] },
+        { division: 'NURALZ', divisionName: 'Ayurvedic', category: 'Capsules', items: ['ASHWAGANDHA CAPSULE','CURCUMIN 95 CAPSULE','DIABORAL CAPSULE','FEMIRAL CAPSULE','HADJOD CAPSULE','IMMURAL CAPSULE','LIPINURA CAPSULE','MIGRONAL CAPSULE','MORINGA CAPSULE','NURASHINE CAPSULE','NURAFIT CAPSULE','NURAJOINT CAPSULE','NURALIV CAPSULE','NURASTONE CAPSULE','PILORAL CAPSULE','ROYAL SHAKTI CAPSULE'] },
+        { division: 'NURALZ', divisionName: 'Ayurvedic', category: 'Tablets', items: ['AMALAKI TABLET','ARJUNA TABLET','GILOY (GUDUCHI) TABLET','KABZRAL TABLET','NEEM TABLET','NURAZYME TABLET','NUR-O-GAS TABLET','SPIRULINA TABLET','TRIKATU TABLET','WHEAT GRASS TABLET'] },
+        { division: 'NURALZ', divisionName: 'Ayurvedic', category: 'Syrups', items: ['AYUSH KWATH SYRUP','DIABORAL SYRUP','FEMIRAL SYRUP','IMMURAL SYRUP','IRONAL SYRUP','LIPINURA SYRUP','NURACUFF SYRUP','NURAGLOW SYRUP','NURAGUM','NURAJOINT SYRUP','NURALIV SYRUP','NURALIV DROPS','NURAMIND SYRUP','NURANTACID SYRUP','NURAPTI SYRUP','NURASTONE SYRUP','NURAVITA DROPS','NURAZYME SYRUP','TULSI DROPS'] },
+        { division: 'NURALZ', divisionName: 'Ayurvedic', category: 'Churans, Oils and Ras’s', items: ['AMALAKI RAS','ALOEVERA RAS','GILOY (GUDUCHI) RAS','KABZRAL CHURAN','NEEM SOAP','NEEM KARELA JAMUN RAS','NONI ALOEVERA','NURACLEAR ACNE N PIMPLE CREAM','NURAFRESH FACE WASH','NURAJOINT OIL','NURAKESH OIL','NURASTRI POWDER','OORJA POWDER','PILORAL OINTMENT WITH APPLICATOR','ROSE SOAP','TRIPHALA GOLD CHURAN'] }
+      ];
+
+      const fallbackPacking = '—';
+      const fallbackComposition = '—';
+      const fallbackGST = '—';
+
+      const records = [];
+      rawData.forEach((divisionGroup) => {
+        divisionGroup.items.forEach((itemName, index) => {
+          const detailKey = `${divisionGroup.division}|${divisionGroup.category}|${itemName}`;
+          const detail = window.vibcareDetails && window.vibcareDetails[detailKey];
+          records.push({
+            division: divisionGroup.division,
+            divisionName: divisionGroup.divisionName,
+            category: divisionGroup.category,
+            sourceNo: index + 1,
+            itemName: itemName,
+            packing: detail ? detail.packing : fallbackPacking,
+            composition: detail ? detail.composition : fallbackComposition,
+            gst: detail ? detail.gst : fallbackGST
+          });
+        });
+      });
+
+      const divisionNames = rawData.reduce((acc, item) => {
+        if (!acc[item.division]) acc[item.division] = item.divisionName;
+        return acc;
+      }, {});
+
+      const state = {
+        division: 'PRIMA',
+        category: 'All',
+        search: '',
+        sort: 'pdfOrder',
+        page: 1,
+        pageSize: 25
+      };
+
+      const ui = {
+        searchInput: document.getElementById('vibcare-search-input'),
+        resultCount: document.getElementById('vibcare-result-count'),
+        tableBody: document.getElementById('vibcare-table-body'),
+        emptyState: document.getElementById('vibcare-empty-state'),
+        sortSelect: document.getElementById('vibcare-sort-select'),
+        summary: document.getElementById('vibcare-pagination-summary'),
+        pagination: document.getElementById('vibcare-pagination-controls'),
+        filterBar: document.getElementById('vibcare-filter-bar'),
+        showcase: document.getElementById('vibcare-division-showcase'),
+        divisionTabs: Array.from(document.querySelectorAll('[data-division]')),
+        drawer: document.getElementById('vibcare-drawer'),
+        overlay: document.getElementById('vibcare-drawer-overlay'),
+        closeBtn: document.getElementById('vibcare-close-btn'),
+        toast: document.getElementById('vibcare-toast'),
+        drawerTitle: document.getElementById('vibcare-drawer-title'),
+        detailName: document.getElementById('vibcare-detail-name'),
+        detailDivision: document.getElementById('vibcare-detail-division'),
+        detailCategory: document.getElementById('vibcare-detail-category'),
+        detailPacking: document.getElementById('vibcare-detail-packing'),
+        detailComposition: document.getElementById('vibcare-detail-composition'),
+        detailGST: document.getElementById('vibcare-detail-gst'),
+        copyBtn: document.getElementById('vibcare-copy-composition')
+      };
+
+      function escapeHtml(value) {
+        return String(value)
+          .replace(/&/g, '&amp;')
+          .replace(/</g, '&lt;')
+          .replace(/>/g, '&gt;')
+          .replace(/"/g, '&quot;')
+          .replace(/'/g, '&#39;');
+      }
+
+      function getDivisionCategories(divisionName) {
+        const categories = rawData.filter((group) => group.division === divisionName).map((group) => group.category);
+        return ['All', ...Array.from(new Set(categories))];
+      }
+
+      function applySort(items, sortChoice) {
+        const next = [...items];
+        if (sortChoice === 'itemAsc') {
+          return next.sort((a, b) => a.itemName.localeCompare(b.itemName, undefined, { sensitivity: 'base' }));
+        }
+        if (sortChoice === 'itemDesc') {
+          return next.sort((a, b) => b.itemName.localeCompare(a.itemName, undefined, { sensitivity: 'base' }));
+        }
+        if (sortChoice === 'category') {
+          return next.sort((a, b) => {
+            const categoryOrder = a.category.localeCompare(b.category, undefined, { sensitivity: 'base' });
+            if (categoryOrder !== 0) return categoryOrder;
+            return a.itemName.localeCompare(b.itemName, undefined, { sensitivity: 'base' });
+          });
+        }
+        if (sortChoice === 'packing') {
+          return next.sort((a, b) => {
+            const packingOrder = String(a.packing).localeCompare(String(b.packing), undefined, { sensitivity: 'base' });
+            if (packingOrder !== 0) return packingOrder;
+            return a.itemName.localeCompare(b.itemName, undefined, { sensitivity: 'base' });
+          });
+        }
+        return next.sort((a, b) => a.sourceNo - b.sourceNo);
+      }
+
+      function syncStateFromUrl() {
+        const params = new URLSearchParams(window.location.search);
+        const division = params.get('division') || 'PRIMA';
+        const categoryParam = params.get('category') || 'All';
+        const searchParam = params.get('search') || '';
+
+        if (divisionNames[division]) {
+          state.division = division;
+        }
+        state.category = getDivisionCategories(state.division).includes(categoryParam) ? categoryParam : 'All';
+        state.search = searchParam;
+        ui.searchInput.value = searchParam;
+        ui.sortSelect.value = state.sort;
+      }
+
+      function updateUrlState() {
+        const params = new URLSearchParams();
+        params.set('division', state.division);
+        if (state.category && state.category !== 'All') params.set('category', state.category);
+        if (state.search) params.set('search', state.search);
+        const next = params.toString() ? `?${params.toString()}` : window.location.pathname;
+        const current = window.location.pathname + window.location.search;
+        if (next !== current) {
+          history.replaceState({}, '', `${window.location.pathname}${params.toString() ? `?${params.toString()}` : ''}`);
+        }
+      }
+
+      function renderDivisionTabs() {
+        ui.divisionTabs.forEach((button) => {
+          const isActive = button.dataset.division === state.division;
+          button.classList.toggle('active', isActive);
+          button.setAttribute('aria-selected', String(isActive));
+        });
+        ui.showcase.querySelectorAll('[data-showcase-division]').forEach((card) => {
+          card.classList.toggle('active', card.dataset.showcaseDivision === state.division);
+        });
+      }
+
+      function renderCategoryFilters() {
+        const categories = getDivisionCategories(state.division);
+        const html = categories.map((category) => {
+          const active = category === state.category ? 'active' : '';
+          return `<button class="vibcare-filter-pill ${active}" type="button" data-category="${escapeHtml(category)}">${escapeHtml(category)}</button>`;
+        }).join('');
+        ui.filterBar.innerHTML = html;
+
+        ui.filterBar.querySelectorAll('[data-category]').forEach((button) => {
+          button.addEventListener('click', () => {
+            state.category = button.dataset.category;
+            state.page = 1;
+            render();
+          });
+        });
+      }
+
+      function getVisibleItems() {
+        let filtered = records.filter((record) => record.division === state.division);
+
+        if (state.category !== 'All') {
+          filtered = filtered.filter((record) => record.category === state.category);
+        }
+
+        const term = state.search.trim().toLowerCase();
+        if (term) {
+          filtered = filtered.filter((record) => {
+            const haystack = [
+              record.itemName,
+              record.category,
+              record.divisionName,
+              record.packing,
+              record.composition,
+              record.gst
+            ].join(' ').toLowerCase();
+            return haystack.includes(term);
+          });
+        }
+
+        return applySort(filtered, state.sort);
+      }
+
+      function renderTable(items) {
+        const start = (state.page - 1) * state.pageSize;
+        const end = start + state.pageSize;
+        const pageItems = items.slice(start, end);
+
+        if (!pageItems.length) {
+          ui.tableBody.innerHTML = '';
+          ui.emptyState.hidden = false;
+          return;
+        }
+
+        ui.emptyState.hidden = true;
+        ui.tableBody.innerHTML = pageItems.map((record) => `
+          <tr class="vibcare-row" tabindex="0" data-row-key="${escapeHtml(record.division)}|${escapeHtml(record.category)}|${escapeHtml(record.itemName)}" data-item-name="${escapeHtml(record.itemName)}" role="button" aria-label="View details for ${escapeHtml(record.itemName)}">
+            <td class="vibcare-col-item"><span class="vibcare-item-name">${escapeHtml(record.itemName)}</span></td>
+            <td class="vibcare-col-packing">${escapeHtml(record.packing)}</td>
+            <td class="vibcare-col-composition">${escapeHtml(record.composition)}</td>
+            <td class="vibcare-col-gst">${escapeHtml(record.gst)}</td>
+          </tr>
+        `).join('');
+
+        ui.tableBody.querySelectorAll('.vibcare-row').forEach((row) => {
+          row.addEventListener('click', () => openDrawer(row));
+          row.addEventListener('keydown', (event) => {
+            if (event.key === 'Enter' || event.key === ' ') {
+              event.preventDefault();
+              openDrawer(row);
+            }
+          });
+        });
+      }
+
+      function openDrawer(row) {
+        const rowKey = row.dataset.rowKey;
+        const product = records.find((record) => {
+          const key = `${record.division}|${record.category}|${record.itemName}`;
+          return key === rowKey;
+        });
+        if (!product) return;
+
+        ui.drawerTitle.textContent = product.itemName;
+        ui.detailName.textContent = product.itemName;
+        ui.detailDivision.textContent = `${product.division} — ${product.divisionName}`;
+        ui.detailCategory.textContent = product.category;
+        ui.detailPacking.textContent = product.packing;
+        ui.detailComposition.textContent = product.composition;
+        ui.detailGST.textContent = product.gst;
+
+        ui.drawer.classList.add('open');
+        ui.overlay.classList.add('open');
+        ui.drawer.setAttribute('aria-hidden', 'false');
+      }
+
+      function closeDrawer() {
+        ui.drawer.classList.remove('open');
+        ui.overlay.classList.remove('open');
+        ui.drawer.setAttribute('aria-hidden', 'true');
+      }
+
+      function showToast(message) {
+        ui.toast.textContent = message;
+        ui.toast.classList.add('show');
+        setTimeout(() => ui.toast.classList.remove('show'), 1600);
+      }
+
+      function renderPagination(total) {
+        const pages = Math.max(1, Math.ceil(total / state.pageSize));
+        if (state.page > pages) state.page = pages;
+
+        const start = total ? (state.page - 1) * state.pageSize + 1 : 0;
+        const end = Math.min(state.page * state.pageSize, total);
+        ui.summary.textContent = `Showing ${start}–${end} of ${total} products`;
+
+        const pageNumbers = [];
+        for (let i = 1; i <= pages; i += 1) {
+          if (i === 1 || i === pages || (i >= state.page - 1 && i <= state.page + 1)) {
+            pageNumbers.push(i);
+          }
+        }
+
+        const buttons = [];
+        buttons.push(`<button class="vibcare-page-btn" type="button" data-page="prev" ${state.page === 1 ? 'disabled' : ''}>Prev</button>`);
+
+        let previous = null;
+        pageNumbers.forEach((pageNo) => {
+          if (previous !== null && pageNo - previous > 1) {
+            buttons.push('<span class="vibcare-page-number">…</span>');
+          }
+          buttons.push(`<button class="vibcare-page-btn ${pageNo === state.page ? 'active' : ''}" type="button" data-page="${pageNo}">${pageNo}</button>`);
+          previous = pageNo;
+        });
+
+        buttons.push(`<button class="vibcare-page-btn" type="button" data-page="next" ${state.page >= pages ? 'disabled' : ''}>Next</button>`);
+        ui.pagination.innerHTML = buttons.join('');
+
+        ui.pagination.querySelectorAll('[data-page]').forEach((button) => {
+          button.addEventListener('click', () => {
+            const action = button.dataset.page;
+            if (action === 'prev') {
+              if (state.page > 1) state.page -= 1;
+            } else if (action === 'next') {
+              if (state.page < pages) state.page += 1;
+            } else {
+              state.page = Number(action);
+            }
+            render();
+          });
+        });
+      }
+
+      function render() {
+        renderDivisionTabs();
+        renderCategoryFilters();
+        const items = getVisibleItems();
+        ui.resultCount.textContent = `${items.length} results`;
+        const currentPage = Math.max(1, state.page);
+        state.page = currentPage;
+        renderTable(items);
+        renderPagination(items.length);
+        updateUrlState();
+      }
+
+      ui.searchInput.addEventListener('input', (event) => {
+        state.search = event.target.value;
+        state.page = 1;
+        render();
+      });
+
+      ui.sortSelect.addEventListener('change', (event) => {
+        state.sort = event.target.value;
+        state.page = 1;
+        render();
+      });
+
+      ui.divisionTabs.forEach((button) => {
+        button.addEventListener('click', () => {
+          state.division = button.dataset.division;
+          state.category = 'All';
+          state.page = 1;
+          render();
+        });
+      });
+
+      ui.showcase.querySelectorAll('[data-showcase-division]').forEach((card) => {
+        card.addEventListener('click', () => {
+          state.division = card.dataset.showcaseDivision;
+          state.category = 'All';
+          state.page = 1;
+          render();
+          document.querySelector('.vibcare-topbar').scrollIntoView({ behavior: 'smooth', block: 'center' });
+        });
+      });
+
+      ui.closeBtn.addEventListener('click', closeDrawer);
+      ui.overlay.addEventListener('click', closeDrawer);
+
+      document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape') closeDrawer();
+      });
+
+      ui.copyBtn.addEventListener('click', async () => {
+        const composition = ui.detailComposition.textContent.trim();
+        if (!composition || composition === '—') {
+          showToast('No composition available');
+          return;
+        }
+        try {
+          await navigator.clipboard.writeText(composition);
+          showToast('Composition copied');
+        } catch (error) {
+          showToast('Copy unavailable');
+        }
+      });
+
+      const heroVisual = document.querySelector('.vibcare-hero-visual');
+      if (heroVisual && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        heroVisual.addEventListener('pointermove', (event) => {
+          const bounds = heroVisual.getBoundingClientRect();
+          const x = (event.clientX - bounds.left) / bounds.width - 0.5;
+          const y = (event.clientY - bounds.top) / bounds.height - 0.5;
+          heroVisual.style.transform = `perspective(900px) rotateX(${y * -3}deg) rotateY(${x * 3}deg) translateY(-4px)`;
+        });
+        heroVisual.addEventListener('pointerleave', () => {
+          heroVisual.style.transform = '';
+        });
+      }
+
+      syncStateFromUrl();
+      render();
+      window.addEventListener('popstate', () => {
+        syncStateFromUrl();
+        render();
+      });
+    }());
+  </script>
+</body>
+</html>

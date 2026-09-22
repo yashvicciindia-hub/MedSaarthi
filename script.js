@@ -17,6 +17,22 @@
         });
     }
 
+    var productMenuToggle = document.querySelector('.nav-dropdown-toggle');
+    if (productMenuToggle) {
+        var productMenu = productMenuToggle.closest('.nav-item');
+        productMenuToggle.addEventListener('click', function (event) {
+            event.stopPropagation();
+            var isOpen = productMenu.classList.toggle('open');
+            productMenuToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+        });
+        document.addEventListener('click', function (event) {
+            if (!productMenu.contains(event.target)) {
+                productMenu.classList.remove('open');
+                productMenuToggle.setAttribute('aria-expanded', 'false');
+            }
+        });
+    }
+
     /* ---------- Active nav link ---------- */
     var here = (location.pathname.split('/').pop() || 'index.html');
     document.querySelectorAll('.nav-links a').forEach(function (a) {
