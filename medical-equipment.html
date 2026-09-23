@@ -300,11 +300,9 @@
     }
 
     function renderListRow(item) {
-      const leadershipValue = item.leadership === 'To verify' ? '<span class="verify-badge">To verify</span>' : item.leadership;
       return `
         <tr class="directory-list-row" data-company-id="${item.id}" tabindex="0" role="button" aria-label="Open details for ${item.companyName}">
           <td>${item.companyName}</td>
-          <td>${leadershipValue}</td>
           <td>${item.equipment}</td>
         </tr>
       `;
@@ -326,7 +324,6 @@
             <thead>
               <tr>
                 <th>Company</th>
-                <th>Leadership</th>
                 <th>Medical Equipment / Products</th>
               </tr>
             </thead>

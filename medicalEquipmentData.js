@@ -74,7 +74,7 @@ window.MEDICAL_EQUIPMENT_DATA = [
   {
     id: 'appasamy-associates',
     companyName: 'Appasamy Associates',
-    leadership: 'Thiru P.S.N. Appasamy',
+    // leadership: 'Thiru P.S.N. Appasamy',
     equipment: 'Ophthalmic lasers, slit lamps, fundus cameras, phaco machines, IOLs',
     contact: '44 4004 3430',
     categories: ['Ophthalmology', 'Surgical', 'Healthcare Technology'],
