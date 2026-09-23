@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Medical Equipment — MedGlobal</title>
+  <meta name="description" content="Explore a comprehensive directory of medical equipment companies and healthcare technology providers across diagnostics, imaging, critical care, laboratory systems, surgery and more.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-brand"><img class="brand-logo" src="assets/MedSaarthi-logo.png" alt="MedGlobal"></a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="platform.html">Platform</a></li>
+      <li class="nav-item has-submenu">
+        <button class="nav-dropdown-toggle" type="button" aria-expanded="false" aria-controls="products-menu">
+          <span>Products</span>
+          <span class="nav-caret">▾</span>
+        </button>
+        <ul class="nav-submenu" id="products-menu">
+          <li><a href="products.html">Our Products</a></li>
+          <li><a href="vibcare-pharma.html">Medicines</a></li>
+          <li><a href="medical-equipment.html">Medical Equipment</a></li>
+        </ul>
+      </li>
+      <li><a href="ecosystem.html">Ecosystem</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <div class="nav-cta">
+      <a href="platform.html" class="btn btn-secondary">Explore Platform</a>
+      <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<header class="page-hero medical-equipment-hero">
+  <div class="container med-hero-grid">
+    <div class="med-hero-copy reveal">
+      <p class="kicker">MEDICAL EQUIPMENT</p>
+      <h1>Medical Equipment &amp;<br>Healthcare Technology</h1>
+      <p class="lede">Explore a comprehensive directory of medical equipment companies and healthcare technology providers across diagnostics, imaging, critical care, laboratory systems, surgery and more.</p>
+      <div class="hero-actions">
+        <a href="#directory" class="btn btn-primary">Explore Directory</a>
+        <a href="contact.html" class="btn btn-secondary">Contact Us</a>
+      </div>
+    </div>
+    <div class="med-hero-visual reveal">
+      <div class="hero-photo-frame doctor-visual-frame">
+        <span class="hero-badge-pill"><span class="dot"></span>Healthcare Technology</span>
+        <img src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&w=1200&q=80" alt="Medical supplies and healthcare products arranged in a clinical setting" width="1200" height="900">
+        <span class="hero-badge-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v18M3 12h18"/><circle cx="12" cy="12" r="7"/></svg>
+        </span>
+        <div class="hero-photo-caption">
+          <strong>Medical infrastructure</strong>
+          <span>Modern clinical technology and trusted healthcare systems</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+
+
+<section class="section tight">
+  <div class="container">
+    <div class="section-head section-head-split">
+      <div>
+        <p class="kicker">Medical Equipment Directory</p>
+        <h2>Discover companies and healthcare technology providers across a broad range of medical equipment and product categories.</h2>
+      </div>
+    </div>
+    <div class="directory-stats" id="directoryStats" aria-live="polite"></div>
+  </div>
+</section>
+
+<!-- Medical Equipment Visual -->
+<section class="medical-equipment-banner">
+  <div class="container">
+    <div class="medical-equipment-banner-image">
+      <img
+        src="assets/medical-equipment-banner.png"
+        alt="Modern medical equipment and healthcare technology"
+      />
+
+      <!-- <div class="equipment-overlay">
+        <span>Diagnostics</span>
+        <span>Imaging</span>
+        <span>Critical Care</span>
+        <span>Laboratory</span>
+        <span>Surgical Technology</span>
+      </div> -->
+    </div>
+  </div>
+</section>
+
+<section class="section tight" id="directory">
+  <div class="container med-directory-shell">
+    <div class="directory-toolbar">
+      <label class="directory-search" aria-label="Search medical equipment companies">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.35-4.35"/></svg>
+        <input id="companySearch" type="search" placeholder="Search companies, equipment or healthcare technologies..." aria-label="Search companies, equipment or healthcare technologies">
+      </label>
+
+      <div class="directory-controls">
+        <div class="filter-group" id="categoryFilters" aria-label="Equipment category filters"></div>
+
+        <div class="sort-group">
+          <label for="sortSelect">Sort by</label>
+          <select id="sortSelect" aria-label="Sort companies">
+            <option value="company-asc">Company Name A–Z</option>
+            <option value="company-desc">Company Name Z–A</option>
+            <option value="category">Category</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <div id="directoryResults" class="directory-results" aria-live="polite"></div>
+
+    <div id="emptyState" class="empty-state" hidden>
+      <h3>No medical equipment providers found.</h3>
+      <p>Try searching by company name, equipment type or healthcare technology.</p>
+      <button type="button" class="btn btn-primary" id="clearSearchBtn">Clear Search</button>
+    </div>
+  </div>
+</section>
+
+<section class="section tight med-cta-section">
+  <div class="container">
+    <div class="med-cta-card">
+      <div class="med-cta-copy">
+        <p class="kicker" style="color:#A9D8DB;">Healthcare technology</p>
+        <h2>Looking for the right healthcare technology?</h2>
+        <p>Explore the medical equipment ecosystem and connect with relevant healthcare technology providers.</p>
+        <div class="hero-actions">
+          <a href="#directory" class="btn btn-primary">Explore Equipment</a>
+          <a href="contact.html" class="btn btn-secondary" style="border-color:rgba(255,255,255,0.35); color:var(--white);">Contact Us</a>
+        </div>
+      </div>
+      <div class="med-cta-visual" aria-hidden="true">
+        <img src="https://images.unsplash.com/photo-1584515933487-779824d29309?auto=format&fit=crop&w=1200&q=80" alt="" loading="lazy">
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-brand"><img class="brand-logo" src="assets/MedSaarthi-logo.png" alt="MedGlobal"></div>
+        <p style="max-width:32ch; color:#9FB3C4; font-size:0.9rem;">Building India's digital infrastructure for affordable generic medicines.</p>
+      </div>
+      <div>
+        <h4>Platform</h4>
+        <ul>
+          <li><a href="platform.html">Architecture</a></li>
+          <li><a href="products.html">Products</a></li>
+          <li><a href="ecosystem.html">Ecosystem</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Company</h4>
+        <ul>
+          <li><a href="about.html">About</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Address</h4>
+        <ul>
+          <li>13, Institutional Area, Lodhi Road, New Delhi 110003</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 MedGlobal. All rights reserved.</span>
+      <span>Empowering every citizen through Access, Trust, Technology &amp; Transparency.</span>
+    </div>
+  </div>
+</footer>
+
+<div id="companyModal" class="company-modal" aria-hidden="true">
+  <div class="company-modal-backdrop" data-close-modal="true"></div>
+  <div class="company-modal-dialog" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <button class="company-modal-close" type="button" aria-label="Close company details">×</button>
+    <div class="company-modal-body">
+      <img id="modalImage" src="" alt="" loading="lazy">
+      <div class="company-modal-copy">
+        <p class="kicker" style="margin-bottom:8px;">Medical Equipment Company</p>
+        <h3 id="modalTitle">Company</h3>
+        <div class="modal-field">
+          <span class="modal-label">CEO / Founder / MD</span>
+          <div id="modalLeadership" class="modal-value"></div>
+        </div>
+        <div class="modal-field">
+          <span class="modal-label">Medical Equipment / Products</span>
+          <div id="modalEquipment" class="modal-value"></div>
+        </div>
+        <button type="button" class="btn btn-secondary company-modal-back" data-close-modal="true">Back to Directory</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="medicalEquipmentData.js"></script>
+<script src="script.js"></script>
+<script>
+  (function () {
+    const data = window.MEDICAL_EQUIPMENT_DATA || [];
+    const filtersWrap = document.getElementById('categoryFilters');
+    const resultsWrap = document.getElementById('directoryResults');
+    const searchInput = document.getElementById('companySearch');
+    const sortSelect = document.getElementById('sortSelect');
+    const emptyState = document.getElementById('emptyState');
+    const clearSearchBtn = document.getElementById('clearSearchBtn');
+    const modal = document.getElementById('companyModal');
+    const modalTitle = document.getElementById('modalTitle');
+    const modalLeadership = document.getElementById('modalLeadership');
+    const modalEquipment = document.getElementById('modalEquipment');
+    const modalImage = document.getElementById('modalImage');
+    const statsWrap = document.getElementById('directoryStats');
+
+    let selectedCategory = 'All Equipment';
+
+    const allCategories = Array.from(new Set(data.flatMap(item => item.categories))).sort();
+    const categoryOptions = ['All Equipment', ...allCategories];
+
+    function normalize(value) {
+      return (value || '').toString().toLowerCase();
+    }
+
+    function renderStats() {
+      const uniqueCategoryCount = new Set(data.flatMap(item => item.categories)).size;
+
+      const items = [
+        { value: `${data.length}+`, label: 'Healthcare Companies' },
+        { value: `${uniqueCategoryCount}`, label: 'Equipment Categories' }
+      ];
+
+      statsWrap.innerHTML = items.map(item => `
+        <div class="stat-box reveal">
+          <strong data-counter="${Number.parseInt(item.value, 10) || 0}" data-suffix="${item.value.includes('+') ? '+' : ''}">${item.value}</strong>
+          <span>${item.label}</span>
+        </div>
+      `).join('');
+    }
+
+    function renderFilters() {
+      filtersWrap.innerHTML = categoryOptions.map(category => `
+        <button class="filter-pill ${selectedCategory === category ? 'active' : ''}" type="button" data-category="${category}" aria-pressed="${selectedCategory === category}">
+          ${category}
+        </button>
+      `).join('');
+
+      filtersWrap.querySelectorAll('.filter-pill').forEach(button => {
+        button.addEventListener('click', () => {
+          selectedCategory = button.dataset.category;
+          renderFilters();
+          renderResults();
+        });
+      });
+    }
+
+    function sortRecords(list) {
+      const sortKey = sortSelect.value;
+      const sorted = [...list];
+      if (sortKey === 'company-desc') {
+        return sorted.sort((a, b) => b.companyName.localeCompare(a.companyName));
+      }
+      if (sortKey === 'category') {
+        return sorted.sort((a, b) => {
+          const aPrimary = (a.categories[0] || '').localeCompare(b.categories[0] || '');
+          return aPrimary || a.companyName.localeCompare(b.companyName);
+        });
+      }
+      return sorted.sort((a, b) => a.companyName.localeCompare(b.companyName));
+    }
+
+    function filterRecords() {
+      const query = normalize(searchInput.value);
+      return sortRecords(data.filter(item => {
+        const matchesCategory = selectedCategory === 'All Equipment' || item.categories.includes(selectedCategory);
+        const matchesSearch = !query || [
+          item.companyName,
+          item.leadership,
+          item.equipment
+        ].some(value => normalize(value).includes(query));
+        return matchesCategory && matchesSearch;
+      }));
+    }
+
+    function renderListRow(item) {
+      const leadershipValue = item.leadership === 'To verify' ? '<span class="verify-badge">To verify</span>' : item.leadership;
+      return `
+        <tr class="directory-list-row" data-company-id="${item.id}" tabindex="0" role="button" aria-label="Open details for ${item.companyName}">
+          <td>${item.companyName}</td>
+          <td>${leadershipValue}</td>
+          <td>${item.equipment}</td>
+        </tr>
+      `;
+    }
+
+    function renderResults() {
+      const filtered = filterRecords();
+
+      if (!filtered.length) {
+        resultsWrap.innerHTML = '';
+        emptyState.hidden = false;
+        return;
+      }
+
+      emptyState.hidden = true;
+      resultsWrap.innerHTML = `
+        <div class="directory-table-wrapper">
+          <table class="directory-list-table">
+            <thead>
+              <tr>
+                <th>Company</th>
+                <th>Leadership</th>
+                <th>Medical Equipment / Products</th>
+              </tr>
+            </thead>
+            <tbody>
+              ${filtered.map(renderListRow).join('')}
+            </tbody>
+          </table>
+        </div>
+      `;
+
+      resultsWrap.querySelectorAll('.directory-list-row').forEach(element => {
+        element.addEventListener('click', () => openModal(element.dataset.companyId));
+        element.addEventListener('keydown', (event) => {
+          if (event.key === 'Enter' || event.key === ' ') {
+            event.preventDefault();
+            openModal(element.dataset.companyId);
+          }
+        });
+      });
+    }
+
+    function openModal(id) {
+      const item = data.find(entry => entry.id === id);
+      if (!item) return;
+      modalTitle.textContent = item.companyName;
+      modalLeadership.innerHTML = item.leadership === 'To verify' ? '<span class="verify-badge">To verify</span>' : item.leadership;
+      modalEquipment.textContent = item.equipment;
+      modalImage.src = item.image;
+      modalImage.alt = `${item.companyName} medical equipment`;
+      modal.classList.add('open');
+      modal.setAttribute('aria-hidden', 'false');
+    }
+
+    function closeModal() {
+      modal.classList.remove('open');
+      modal.setAttribute('aria-hidden', 'true');
+    }
+
+    searchInput.addEventListener('input', renderResults);
+    sortSelect.addEventListener('change', renderResults);
+
+    clearSearchBtn.addEventListener('click', () => {
+      searchInput.value = '';
+      renderResults();
+      searchInput.focus();
+    });
+
+    modal.addEventListener('click', (event) => {
+      if (event.target.dataset.closeModal === 'true' || event.target === modal) {
+        closeModal();
+      }
+    });
+    document.querySelector('.company-modal-close').addEventListener('click', closeModal);
+    document.querySelector('.company-modal-back').addEventListener('click', closeModal);
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape' && modal.classList.contains('open')) {
+        closeModal();
+      }
+    });
+
+    renderStats();
+    renderFilters();
+    renderResults();
+  })();
+</script>
+</body>
+</html>
