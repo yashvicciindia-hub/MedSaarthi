@@ -300,7 +300,42 @@
         });
     }
 
-    /* ---------- medGlobal Assistant: local knowledge chatbot ---------- */
+
+    /* ---------- MedGlobal App Download CTA ---------- */
+    function initAppDownloadCTA() {
+        /* Guard: do not insert twice */
+        if (document.getElementById('medglobal-app-download-cta')) return;
+
+        var cta = document.createElement('div');
+        cta.className = 'medglobal-app-download';
+        cta.id = 'medglobal-app-download-cta';
+        cta.innerHTML = '<a' +
+            ' href="/MedGlobal.apk"' +
+            ' download="MedGlobal.apk"' +
+            ' class="medglobal-app-download__link"' +
+            ' aria-label="Download MedGlobal Android App"' +
+            ' id="medglobal-app-download-link"' +
+            '>' +
+            '<span class="medglobal-app-download__icon" aria-hidden="true">' +
+            '<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">' +
+            /* Phone body */
+            '<rect x="5" y="2" width="14" height="20" rx="2" ry="2"/>' +
+            /* Home indicator */
+            '<line x1="9" y1="18" x2="15" y2="18"/>' +
+            /* Download arrow pointing into device */
+            '<polyline points="12 7 12 13 9.5 10.5"/>' +
+            '<polyline points="12 13 14.5 10.5"/>' +
+            '</svg>' +
+            '</span>' +
+            '<span class="medglobal-app-download__label">Download App</span>' +
+            '</a>';
+
+        document.body.appendChild(cta);
+    }
+
+    initAppDownloadCTA();
+    initAssistant();
+
     var assistantKnowledge = [
         { keys: ['hello', 'hi', 'hey', 'good morning', 'good evening'], reply: 'Hello. I am the medGlobal Assistant. I can help you explore the platform, products, medicine discovery, prescription intelligence and healthcare ecosystem.' },
         { keys: ['what is medsaarthi', 'what does medsaarthi', 'about medsaarthi', 'who are you'], reply: 'medGlobal is building India\'s digital infrastructure for affordable generic medicines. Its vision is to connect patients, doctors, pharmacies, distributors and government through one secure digital ecosystem that improves medicine discovery, trust and access.' },

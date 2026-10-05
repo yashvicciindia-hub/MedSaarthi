@@ -3235,3 +3235,212 @@ select:focus-visible {
 .medical-equipment-banner-image {
     margin-top: 0 !important;
 }
+
+/* ============================================================
+   MedGlobal App Download CTA — Floating Button
+   Scoped with .medglobal-app-download prefix to avoid
+   conflicts with existing MedGlobal styles.
+   Sits above the chatbot launcher (bottom: ~110px).
+   z-index: 299 (below chatbot z-index:300).
+   ============================================================ */
+
+.medglobal-app-download {
+    position: fixed;
+    right: 20px;
+    bottom: 110px;
+    z-index: 299;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    font-family: var(--font-body);
+}
+
+.medglobal-app-download__link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0;
+    padding: 0;
+    width: 62px;
+    height: 62px;
+    border-radius: 50px;
+    background: var(--navy-900);
+    color: var(--white);
+    text-decoration: none;
+    border: 1px solid rgba(20, 151, 163, 0.3);
+    box-shadow:
+        0 10px 28px rgba(11, 33, 54, 0.22),
+        0 0 0 5px rgba(20, 151, 163, 0.08);
+    cursor: pointer;
+    overflow: hidden;
+    transition:
+        width 0.28s cubic-bezier(0.4, 0, 0.2, 1),
+        border-radius 0.28s cubic-bezier(0.4, 0, 0.2, 1),
+        box-shadow 0.22s ease,
+        transform 0.18s ease,
+        background 0.18s ease;
+    white-space: nowrap;
+    justify-content: center;
+}
+
+.medglobal-app-download__link:hover,
+.medglobal-app-download__link:focus-visible {
+    width: 188px;
+    border-radius: 31px;
+    background: var(--navy-700);
+    box-shadow:
+        0 15px 36px rgba(11, 33, 54, 0.28),
+        0 0 0 6px rgba(20, 151, 163, 0.12);
+    transform: translateY(-2px);
+    justify-content: flex-start;
+    padding-left: 18px;
+    gap: 10px;
+}
+
+.medglobal-app-download__link:active {
+    transform: translateY(0);
+}
+
+.medglobal-app-download__link:focus-visible {
+    outline: 2px solid var(--teal-500);
+    outline-offset: 3px;
+}
+
+/* Icon wrapper — always centered in collapsed mode */
+.medglobal-app-download__icon {
+    flex: none;
+    width: 26px;
+    height: 26px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--white);
+    position: relative;
+    z-index: 1;
+}
+
+.medglobal-app-download__icon svg {
+    width: 24px;
+    height: 24px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.7;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    transition: transform 0.18s ease;
+}
+
+.medglobal-app-download__link:hover .medglobal-app-download__icon svg,
+.medglobal-app-download__link:focus-visible .medglobal-app-download__icon svg {
+    transform: scale(1.06);
+}
+
+/* Text label — hidden until hover expands the pill */
+.medglobal-app-download__label {
+    font-size: 0.88rem;
+    font-weight: 600;
+    color: var(--white);
+    white-space: nowrap;
+    opacity: 0;
+    max-width: 0;
+    overflow: hidden;
+    transition:
+        opacity 0.18s ease 0.08s,
+        max-width 0.28s cubic-bezier(0.4, 0, 0.2, 1);
+    letter-spacing: 0.01em;
+}
+
+.medglobal-app-download__link:hover .medglobal-app-download__label,
+.medglobal-app-download__link:focus-visible .medglobal-app-download__label {
+    opacity: 1;
+    max-width: 140px;
+}
+
+/* ---- Tooltip on collapsed state ---- */
+.medglobal-app-download__link::after {
+    content: "Download App";
+    position: absolute;
+    right: calc(100% + 12px);
+    top: 50%;
+    transform: translateY(-50%);
+    background: var(--navy-900);
+    color: var(--white);
+    font-size: 0.78rem;
+    font-weight: 600;
+    padding: 6px 12px;
+    border-radius: var(--radius-sm);
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.18s ease;
+    box-shadow: var(--shadow-sm);
+}
+
+@media (hover: hover) {
+    /* Show tooltip only on hover when not yet expanded (narrow screens where expansion is off) */
+    .medglobal-app-download__link:hover::after {
+        opacity: 0; /* suppressed — we use the inline label instead on desktop */
+    }
+}
+
+/* ---- Mobile: compact 52px circle, no expansion ---- */
+@media (max-width: 560px) {
+    .medglobal-app-download {
+        right: 16px;
+        bottom: 96px;
+    }
+
+    .medglobal-app-download__link {
+        width: 52px;
+        height: 52px;
+        border-radius: 50%;
+    }
+
+    /* Disable hover expansion on mobile/touch */
+    .medglobal-app-download__link:hover,
+    .medglobal-app-download__link:focus-visible {
+        width: 52px;
+        border-radius: 50%;
+        padding-left: 0;
+        gap: 0;
+        justify-content: center;
+        transform: none;
+    }
+
+    .medglobal-app-download__link:hover .medglobal-app-download__label,
+    .medglobal-app-download__link:focus-visible .medglobal-app-download__label {
+        opacity: 0;
+        max-width: 0;
+    }
+
+    .medglobal-app-download__icon svg {
+        width: 22px;
+        height: 22px;
+    }
+}
+
+/* ---- Tablet: slightly smaller ---- */
+@media (min-width: 561px) and (max-width: 900px) {
+    .medglobal-app-download {
+        right: 20px;
+        bottom: 106px;
+    }
+
+    .medglobal-app-download__link {
+        width: 58px;
+        height: 58px;
+    }
+
+    .medglobal-app-download__link:hover,
+    .medglobal-app-download__link:focus-visible {
+        width: 178px;
+    }
+}
+
+/* ---- Respect reduced-motion preference ---- */
+@media (prefers-reduced-motion: reduce) {
+    .medglobal-app-download__link,
+    .medglobal-app-download__icon svg,
+    .medglobal-app-download__label {
+        transition: none !important;
+    }
+}
