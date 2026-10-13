@@ -802,10 +802,9 @@
       color: var(--navy-900);
     }
 
-    .vibcare-page .vibcare-col-item { width: 36%; }
-    .vibcare-page .vibcare-col-packing { width: 18%; }
-    .vibcare-page .vibcare-col-composition { width: 31%; }
-    .vibcare-page .vibcare-col-gst { width: 15%; }
+    .vibcare-page .vibcare-col-item { width: 40%; }
+    .vibcare-page .vibcare-col-packing { width: 22%; }
+    .vibcare-page .vibcare-col-composition { width: 38%; }
 
     .vibcare-page .vibcare-empty {
       padding: 28px 18px;
@@ -1249,7 +1248,6 @@
             <th class="vibcare-col-item">Item</th>
             <th class="vibcare-col-packing">Packing</th>
             <th class="vibcare-col-composition">Composition</th>
-            <th class="vibcare-col-gst">GST</th>
           </tr>
         </thead>
         <tbody id="vibcare-table-body"></tbody>
@@ -1664,7 +1662,6 @@
             <td class="vibcare-col-item"><span class="vibcare-item-name">${escapeHtml(record.itemName)}</span></td>
             <td class="vibcare-col-packing">${escapeHtml(record.packing)}</td>
             <td class="vibcare-col-composition">${escapeHtml(record.composition)}</td>
-            <td class="vibcare-col-gst">${escapeHtml(record.gst)}</td>
           </tr>
         `).join('');
 
