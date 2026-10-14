@@ -3540,11 +3540,16 @@ select:focus-visible {
 }
 
 .home-hero__brand {
+    display: inline-flex;
+    align-items: center;
     margin: 14px 0 0;
-    color: #8a6c43;
+    padding: 5px 10px 5px 12px;
+    border-left: 2px solid #c49a5a;
+    background: rgba(196, 154, 90, .12);
+    color: #71552e;
     font-size: .76rem;
-    font-weight: 600;
-    letter-spacing: .15em;
+    font-weight: 700;
+    letter-spacing: .17em;
     text-transform: uppercase;
 }
 
